@@ -73,7 +73,7 @@ describe("Invoice store testing filterInvoiceByStatus function", () => {
     expect(store.getInvoicesByStatus.length).toBe(1);
     expect(store.getInvoicesByStatus[0].status).toBe(InvoiceStatus.Pending);
   });
-  it("filterInvoice with Pending status", () => {
+  it("filterInvoice with Paid status", () => {
     let invoiceStatus: InvoiceStatus = InvoiceStatus.Paid;
     let filterInvoice: Boolean = true;
 
@@ -82,30 +82,19 @@ describe("Invoice store testing filterInvoiceByStatus function", () => {
     expect(store.getInvoicesByStatus.length).toBe(1);
     expect(store.getInvoicesByStatus[0].status).toBe(InvoiceStatus.Paid);
   });
-  it("filterInvoice with every status (Draft,Pending,Paid) and with zero status", () => {
+  it("filterInvoice with no filter active => select All", () => {
     let invoiceStatus: InvoiceStatus = InvoiceStatus.Paid;
-    let invoiceStatus2: InvoiceStatus = InvoiceStatus.Draft;
-    let invoiceStatus3: InvoiceStatus = InvoiceStatus.Pending;
-    let filterInvoice: Boolean = true;
+    let filterInvoice: Boolean = false;
 
     store.filterInvoiceByStatus(invoiceStatus, filterInvoice);
-    store.filterInvoiceByStatus(invoiceStatus2, filterInvoice);
-    store.filterInvoiceByStatus(invoiceStatus3, filterInvoice);
 
     expect(store.getInvoicesByStatus.length).toBe(3);
-    expect(store.getInvoicesByStatus[0].status).toBe(InvoiceStatus.Paid);
-    expect(store.getInvoicesByStatus[1].status).toBe(InvoiceStatus.Draft);
-    expect(store.getInvoicesByStatus[2].status).toBe(InvoiceStatus.Pending);
-
-    // now with no filterStatus =>  must be the same result as from json createInvoiceData file
-    filterInvoice = false;
-    store.filterInvoiceByStatus(invoiceStatus, filterInvoice);
-    store.filterInvoiceByStatus(invoiceStatus2, filterInvoice);
-    store.filterInvoiceByStatus(invoiceStatus3, filterInvoice);
-
-    expect(store.getInvoicesByStatus.length).toBe(3);
-    expect(store.getInvoicesByStatus[0].status).toBe(InvoiceStatus.Paid);
-    expect(store.getInvoicesByStatus[1].status).toBe(InvoiceStatus.Pending);
-    expect(store.getInvoicesByStatus[2].status).toBe(InvoiceStatus.Draft);
+    expect(store.getInvoiceFilterStatus).toBe(InvoiceStatus.NONE);
+  });
+  it("return invoiceFilterCount with active InvoiceStatus", () => {
+    store.invoiceFilterStatus = InvoiceStatus.Paid;
+    store.invoiceDataByStatus = [createInvoiceFilterData()[0]];
+    let invoiceFilterCount: number = store.getInvoicesCount;
+    expect(invoiceFilterCount).toBe(1);
   });
 });

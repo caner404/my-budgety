@@ -34,7 +34,7 @@ describe("TheMain.vue", () => {
       false
     );
   });
-  it("renders properly the List of invoices", () => {
+  it("renders no invoices => InvoiceListEmpty Component is shown", () => {
     let invoiceArr: Invoice[] = [];
     const wrapper = shallowMount(TheMain, {
       global: {
@@ -57,7 +57,7 @@ describe("TheMain.vue", () => {
       true
     );
   });
-  it("renders properly the List of invoices by filter", () => {
+  it("renders properly the List of invoices no filter active", () => {
     let invoiceArr: Invoice[] = createInvoiceFilterData();
     const wrapper = shallowMount(TheMain, {
       global: {
@@ -67,11 +67,32 @@ describe("TheMain.vue", () => {
             initialState: {
               invoice: {
                 invoiceData: invoiceArr,
-                invoiceFilterArr: new Set([
-                  InvoiceStatus.Draft,
-                  InvoiceStatus.Paid,
-                  InvoiceStatus.Pending,
-                ]),
+                invoiceFilterStatus: InvoiceStatus.NONE,
+              },
+            },
+          }),
+        ],
+      },
+    });
+    const store = useInvoiceStore();
+
+    expect(store.loadInvoices).toHaveBeenCalledOnce();
+    expect(wrapper.findComponent({ name: "InvoiceList" }).exists()).toBe(true);
+    expect(wrapper.findComponent({ name: "InvoiceListEmpty" }).exists()).toBe(
+      false
+    );
+  });
+  it("renders properly the List of invoices with active filter", () => {
+    let invoiceArr: Invoice[] = createInvoiceFilterData();
+    const wrapper = shallowMount(TheMain, {
+      global: {
+        plugins: [
+          createTestingPinia({
+            createSpy: vi.fn,
+            initialState: {
+              invoice: {
+                invoiceData: invoiceArr,
+                invoiceFilterStatus: InvoiceStatus.Draft,
               },
             },
           }),

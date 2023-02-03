@@ -6,14 +6,13 @@ import InvoiceFilter from "./InvoiceFilter.vue";
 import InvoiceCreateButton from "./InvoiceCreateButton.vue";
 import { useInvoiceStore } from "@/stores/invoice";
 import invoiceJson from "@/json/data.json";
-import { InvoiceStatus, type Invoice } from "@/types/InvoiceModule";
+import type { Invoice } from "@/types/InvoiceModule";
 import { computed } from "vue";
 
 const store = useInvoiceStore();
 store.loadInvoices(invoiceJson as Invoice[]);
 const invoicesData = computed(() => {
-  if (store.invoiceFilterStatus !== InvoiceStatus.NONE)
-    return store.invoiceDataByStatus;
+  if (store.isInvoiceFilterStatusActive) return store.invoiceDataByStatus;
   return store.getInvoices;
 });
 const show = store.isInvoicesEmpty;

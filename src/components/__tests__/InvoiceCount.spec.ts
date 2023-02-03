@@ -67,7 +67,7 @@ describe("InvoiceCount.vue", () => {
     });
     const store = useInvoiceStore();
     expect(wrapper.find('[data-test="invoice-count"').text()).toMatch(
-      `${store.invoiceData.length} Invoices`
+      `${store.invoiceData.length} invoices`
     );
   });
 });

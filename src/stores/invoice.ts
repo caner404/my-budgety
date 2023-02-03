@@ -12,14 +12,17 @@ export const useInvoiceStore = defineStore("invoice", {
     getInvoices: (state) => {
       return state.invoiceData;
     },
-    getInvoicesCount: (state) => {
-      if (state.invoiceFilterStatus !== InvoiceModule.InvoiceStatus.NONE) {
+    getInvoicesCount(state): number {
+      if (this.isInvoiceFilterStatusActive) {
         return state.invoiceDataByStatus.length;
       }
       return state.invoiceData.length;
     },
     isInvoicesEmpty: (state) => {
       return state.invoiceData.length <= 0;
+    },
+    isInvoiceFilterStatusActive: (state) => {
+      return state.invoiceFilterStatus !== InvoiceModule.InvoiceStatus.NONE;
     },
     getInvoicesByStatus: (state) => {
       return state.invoiceDataByStatus;
