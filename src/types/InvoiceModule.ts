@@ -17,6 +17,7 @@ export enum InvoiceStatus {
   Paid = "Paid",
   Pending = "Pending",
   Draft = "Draft",
+  NONE = "None",
 }
 
 export interface Address {

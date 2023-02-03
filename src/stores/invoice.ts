@@ -5,7 +5,7 @@ export const useInvoiceStore = defineStore("invoice", {
   state: () => ({
     invoiceData: [] as InvoiceModule.Invoice[],
     invoiceDataByStatus: [] as InvoiceModule.Invoice[],
-    invoiceFilterArr: new Set(),
+    invoiceFilterStatus: InvoiceModule.InvoiceStatus.NONE,
   }),
 
   getters: {
@@ -13,8 +13,9 @@ export const useInvoiceStore = defineStore("invoice", {
       return state.invoiceData;
     },
     getInvoicesCount: (state) => {
-      if (state.invoiceFilterArr.size > 0)
+      if (state.invoiceFilterStatus !== InvoiceModule.InvoiceStatus.NONE) {
         return state.invoiceDataByStatus.length;
+      }
       return state.invoiceData.length;
     },
     isInvoicesEmpty: (state) => {
@@ -22,6 +23,9 @@ export const useInvoiceStore = defineStore("invoice", {
     },
     getInvoicesByStatus: (state) => {
       return state.invoiceDataByStatus;
+    },
+    getInvoiceFilterStatus: (state) => {
+      return state.invoiceFilterStatus;
     },
   },
 
@@ -49,21 +53,17 @@ export const useInvoiceStore = defineStore("invoice", {
       withFilter: Boolean
     ): InvoiceModule.Invoice[] {
       if (withFilter) {
-        this.invoiceFilterArr.add(invoiceStatus);
+        this.invoiceFilterStatus = invoiceStatus;
       } else {
-        this.invoiceFilterArr.delete(invoiceStatus);
+        this.invoiceFilterStatus = InvoiceModule.InvoiceStatus.NONE;
       }
 
       this.invoiceDataByStatus = [];
-      if (this.invoiceFilterArr.size > 0) {
-        this.invoiceFilterArr.forEach((invoiceFilterStatus) => {
-          let filterResult = this.invoiceData.filter((invoice) => {
-            return invoice.status === invoiceFilterStatus;
-          });
-          filterResult.forEach((result) =>
-            this.invoiceDataByStatus.push(result)
-          );
+      if (this.invoiceFilterStatus !== InvoiceModule.InvoiceStatus.NONE) {
+        let filterResult = this.invoiceData.filter((invoice) => {
+          return invoice.status === this.invoiceFilterStatus;
         });
+        filterResult.forEach((result) => this.invoiceDataByStatus.push(result));
       } else {
         this.invoiceDataByStatus = this.invoiceData;
       }

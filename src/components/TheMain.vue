@@ -3,15 +3,17 @@ import InvoiceCount from "./InvoiceCount.vue";
 import InvoiceListEmpty from "./InvoiceListEmpty.vue";
 import InvoiceList from "./InvoiceList.vue";
 import InvoiceFilter from "./InvoiceFilter.vue";
+import InvoiceCreateButton from "./InvoiceCreateButton.vue";
 import { useInvoiceStore } from "@/stores/invoice";
 import invoiceJson from "@/json/data.json";
-import type { Invoice } from "@/types/InvoiceModule";
+import { InvoiceStatus, type Invoice } from "@/types/InvoiceModule";
 import { computed } from "vue";
 
 const store = useInvoiceStore();
 store.loadInvoices(invoiceJson as Invoice[]);
 const invoicesData = computed(() => {
-  if (store.invoiceFilterArr.size > 0) return store.invoiceDataByStatus;
+  if (store.invoiceFilterStatus !== InvoiceStatus.NONE)
+    return store.invoiceDataByStatus;
   return store.getInvoices;
 });
 const show = store.isInvoicesEmpty;
@@ -21,9 +23,7 @@ const show = store.isInvoicesEmpty;
     <div class="main-subheading">
       <InvoiceCount />
       <InvoiceFilter />
-      <div class="invoiceCreateButton">
-        <button>Create</button>
-      </div>
+      <InvoiceCreateButton />
     </div>
     <InvoiceListEmpty v-if="show" />
     <InvoiceList v-else :invoices="invoicesData" />

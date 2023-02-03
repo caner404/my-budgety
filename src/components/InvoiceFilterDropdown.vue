@@ -1,13 +1,52 @@
 <script setup lang="ts">
 import InvoiceFilterItem from "./InvoiceFilterItem.vue";
 import { InvoiceStatus } from "@/types/InvoiceModule";
+import { useInvoiceStore } from "@/stores/invoice";
+import { ref } from "vue";
+
+const store = useInvoiceStore();
+const showIconDraft = ref(false);
+const showIconPending = ref(false);
+const showIconPaid = ref(false);
+function handleInvoiceFilter(invoiceStatus: InvoiceStatus): void {
+  let showActiveIcon = false;
+  if (invoiceStatus === InvoiceStatus.Draft) {
+    showActiveIcon = !showIconDraft.value;
+    showIconDraft.value = !showIconDraft.value;
+    showIconPending.value = false;
+    showIconPaid.value = false;
+  } else if (invoiceStatus === InvoiceStatus.Pending) {
+    showActiveIcon = !showIconPending.value;
+    showIconPending.value = !showIconPending.value;
+    showIconDraft.value = false;
+    showIconPaid.value = false;
+  } else {
+    showActiveIcon = !showIconPaid.value;
+    showIconPaid.value = !showIconPaid.value;
+    showIconPending.value = false;
+    showIconDraft.value = false;
+  }
+  store.filterInvoiceByStatus(invoiceStatus, showActiveIcon);
+}
 </script>
 <template>
   <div class="filterDropdown">
     <div class="filterList">
-      <InvoiceFilterItem :filterStatus="InvoiceStatus.Draft" />
-      <InvoiceFilterItem :filterStatus="InvoiceStatus.Pending" />
-      <InvoiceFilterItem :filterStatus="InvoiceStatus.Paid" />
+      <InvoiceFilterItem
+        @handle-invoice-filter="handleInvoiceFilter"
+        :filterStatus="InvoiceStatus.Draft"
+        :showIconCheck="showIconDraft"
+      />
+      <InvoiceFilterItem
+        @handle-invoice-filter="handleInvoiceFilter"
+        :filterStatus="InvoiceStatus.Pending"
+        :showIconCheck="showIconPending"
+      />
+      <InvoiceFilterItem
+        @handle-invoice-filter="handleInvoiceFilter"
+        :filterStatus="InvoiceStatus.Paid"
+        :showIconCheck="showIconPaid"
+      />
     </div>
   </div>
 </template>

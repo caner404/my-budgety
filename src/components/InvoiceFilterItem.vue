@@ -1,27 +1,23 @@
 <script setup lang="ts">
 import IconCheck from "./icons/IconCheck.vue";
-import { ref, type PropType } from "vue";
+import type { PropType } from "vue";
 import type { InvoiceStatus } from "@/types/InvoiceModule";
 
-import { useInvoiceStore } from "@/stores/invoice";
-
-const store = useInvoiceStore();
 const props = defineProps({
   filterStatus: {
     type: String as PropType<InvoiceStatus>,
     required: true,
   },
+  showIconCheck: {
+    type: Boolean,
+    required: true,
+  },
 });
-const showIconCheck = ref(false);
-function handleInvoiceFilter() {
-  showIconCheck.value = !showIconCheck.value;
-  store.filterInvoiceByStatus(props.filterStatus, showIconCheck.value);
-}
 </script>
 <template>
   <div class="filterItem">
     <button
-      @click="handleInvoiceFilter"
+      @click="$emit('handleInvoiceFilter', filterStatus)"
       :class="{ itemClicked: showIconCheck }"
     >
       <IconCheck v-show="showIconCheck" />

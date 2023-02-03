@@ -41,8 +41,10 @@
 }
 .logo-container--reverse {
   position: absolute;
+  height: 3.6rem;
   top: 50%;
   transform: matrix(-1, 0, 0, 1, 0, 0);
   background-color: var(--c-purple-light);
+  border-radius: 0rem 2rem 0rem 2rem;
 }
 </style>
