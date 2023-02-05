@@ -10,7 +10,7 @@ export interface Invoice {
   clientEmail: string;
   clientAddress: Address;
   senderAddress: Address;
-  items: Item[];
+  items: InvoiceItem[];
 }
 
 export enum InvoiceStatus {
@@ -26,7 +26,7 @@ export interface Address {
   postCode: string;
   country: string;
 }
-export interface Item {
+export interface InvoiceItem {
   name: string;
   quantity: number;
   price: number;

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useInvoiceStore } from "@/stores/invoice";
-import { InvoiceStatus } from "@/types/InvoiceModule";
 import { computed } from "vue";
 
 const store = useInvoiceStore();

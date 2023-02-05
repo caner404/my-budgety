@@ -2,27 +2,32 @@ import { shallowMount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import InvoiceList from "@/components/InvoiceList.vue";
 import * as InvoiceModule from "@/types/InvoiceModule";
+import router from "@/router";
 
 describe("InvoiceList.vue", () => {
   const invoicesData: InvoiceModule.Invoice[] = createInvoiceData();
 
   it("display no invoices", () => {
     const wrapper = shallowMount(InvoiceList, {
+      global: {
+        stubs: ["router-link"],
+      },
       props: {
         invoices: [],
       },
     });
-    expect(wrapper.findAllComponents({ name: "InvoiceListItem" }).length).toBe(
-      0
-    );
+    expect(wrapper.findAll("[data-test='router-link']").length).toBe(0);
   });
-  it("display invoices", () => {
+  it("display invoices", async () => {
     const wrapper = shallowMount(InvoiceList, {
+      global: {
+        stubs: ["router-link"],
+      },
       props: {
         invoices: invoicesData,
       },
     });
-    expect(wrapper.findAllComponents({ name: "InvoiceListItem" }).length).toBe(
+    expect(wrapper.findAll("[data-test='router-link']").length).toBe(
       invoicesData.length
     );
   });

@@ -12,11 +12,16 @@ const props = defineProps({
 </script>
 <template>
   <ul class="invoice-list">
-    <InvoiceListItem
+    <router-link
       v-for="invoice in invoices"
-      :item="invoice"
       :key="invoice.id"
-    />
+      :to="{ name: 'InvoicesShow', params: { id: invoice.id } }"
+      custom
+      v-slot="{ navigate }"
+      data-test="router-link"
+    >
+      <InvoiceListItem :item="invoice" @click="navigate" role="link" />
+    </router-link>
   </ul>
 </template>
 <style scoped>

@@ -30,6 +30,12 @@ export const useInvoiceStore = defineStore("invoice", {
     getInvoiceFilterStatus: (state) => {
       return state.invoiceFilterStatus;
     },
+    getInvoiceById: (state) => {
+      return (invoiceId: String | String[]): InvoiceModule.Invoice => {
+        if (Array.isArray(invoiceId)) invoiceId.toString();
+        return state.invoiceData.find((invoice) => invoice.id === invoiceId)!;
+      };
+    },
   },
 
   actions: {
@@ -40,15 +46,26 @@ export const useInvoiceStore = defineStore("invoice", {
         return InvoiceModule.InvoiceStatus.Pending;
       return InvoiceModule.InvoiceStatus.Draft;
     },
-
+    formateDate(invoiceDate: string): string {
+      let options: Intl.DateTimeFormatOptions = {
+        year: "numeric",
+        month: "short",
+        day: "2-digit",
+      };
+      const paymentDate = new Date(invoiceDate);
+      const dateTime = new Intl.DateTimeFormat("default", options).format(
+        paymentDate
+      );
+      return dateTime;
+    },
     loadInvoices(invoiceJson: InvoiceModule.Invoice[]) {
-      if (invoiceJson?.length > 0) {
+      if (this.invoiceData?.length <= 0) {
         this.invoiceData = invoiceJson;
-        this.invoiceData.forEach(
-          (invoice) => (invoice.status = this.calculateStatus(invoice.status))
-        );
-      } else {
-        console.log(`InvoiceContainer is empty or not defined`);
+        this.invoiceData.forEach((invoice) => {
+          invoice.status = this.calculateStatus(invoice.status);
+          invoice.createdAt = this.formateDate(invoice.createdAt);
+          invoice.paymentDue = this.formateDate(invoice.paymentDue);
+        });
       }
     },
     filterInvoiceByStatus(
