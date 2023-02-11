@@ -6,7 +6,9 @@ import IconAvatar from "@/components/icons/IconAvatar.vue";
 
 <template>
   <header>
-    <IconLogo />
+    <router-link to="/">
+      <IconLogo />
+    </router-link>
     <IconMoon />
     <IconAvatar />
   </header>

@@ -2,41 +2,37 @@
 import { computed } from "vue";
 
 const props = defineProps({
-  text: {
+  mode: {
     type: String,
     required: true,
   },
 });
 const classObject = computed(() => ({
-  edit: props.text === "Edit",
-  delete: props.text === "Delete",
-  paid: props.text === "Mark as paid",
+  grey: props.mode === "grey",
+  red: props.mode === "red",
+  violet: props.mode === "violet",
 }));
 </script>
 <template>
   <button :class="classObject">
-    <p>{{ props.text }}</p>
+    <slot></slot>
   </button>
 </template>
 <style scoped>
-p {
-  font-weight: 700;
-}
 button {
   cursor: pointer;
   color: #fff;
   border-radius: 2.4rem;
   padding: 1.5rem 2.4rem;
-  font-weight: 700;
 }
-.paid {
+.violet {
   background-color: var(--c-violet-dark);
 }
-.edit {
+.grey {
   color: #7e88c3;
   background-color: var(--c-invoice-items-background);
 }
-.delete {
+.red {
   background-color: var(--c-red);
 }
 </style>

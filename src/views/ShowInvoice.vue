@@ -10,8 +10,10 @@ import type { Invoice } from "@/types/InvoiceModule";
 
 const route = useRoute();
 const store = useInvoiceStore();
-const invoiceById = store.getInvoiceById;
-const invoice: Invoice = computed(() => invoiceById(route.params.id)).value;
+const paramId = route.params.id;
+const invoice: Invoice = computed(() =>
+  store.getInvoiceById(route.params.id)
+).value;
 </script>
 <template>
   <main>
@@ -23,9 +25,19 @@ const invoice: Invoice = computed(() => invoiceById(route.params.id)).value;
     <InvoiceDetailed :invoice="invoice" />
   </main>
   <footer>
-    <BaseButton text="Edit" />
-    <BaseButton text="Delete" />
-    <BaseButton text="Mark as paid" />
+    <BaseButton mode="grey">
+      <router-link
+        :to="{ name: 'InvoicesEdit', params: { id: paramId } }"
+        class="router-link bold"
+        >Edit</router-link
+      >
+    </BaseButton>
+    <BaseButton mode="red">
+      <p class="bold">Delete</p>
+    </BaseButton>
+    <BaseButton mode="violet">
+      <p class="bold">Mark as paid</p>
+    </BaseButton>
   </footer>
 </template>
 <style scoped>
@@ -52,5 +64,8 @@ footer {
   justify-content: space-around;
   align-items: center;
   padding: 2rem;
+}
+.router-link {
+  color: #7e88c3;
 }
 </style>
