@@ -34,18 +34,17 @@ const props = defineProps({
 }
 .filterItem button {
   border: none;
-  background-color: var(--c-button-background-color);
+  border: 1px solid var(--color-background-neutral-400);
+  background-color: var(--color-background-neutral-400);
   width: 1.6rem;
   height: 1.6rem;
   border-radius: 2px;
 }
-.filterItem button {
-  border-color: var(--c-violet-dark);
-}
+
 .filterItem button.itemClicked {
-  background-color: var(--c-violet-dark);
+  background-color: var(--color-background-primary);
 }
 .filterItem button:hover {
-  border: 1px solid var(--c-violet-dark);
+  border: 1px solid var(--color-border-primary);
 }
 </style>

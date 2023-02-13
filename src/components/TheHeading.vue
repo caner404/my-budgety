@@ -19,6 +19,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--c-header-background);
+  background-color: var(--color-background-secondary);
 }
 </style>

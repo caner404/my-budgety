@@ -54,7 +54,7 @@ function handleInvoiceFilter(invoiceStatus: InvoiceStatus): void {
 .filterDropdown {
   position: absolute;
   top: 3rem;
-  background: #ffffff;
+  background: var(--color-background-white);
   box-shadow: 0px 1rem 2rem rgba(72, 84, 159, 0.25);
   border-radius: 0.8rem;
   padding: 2rem;

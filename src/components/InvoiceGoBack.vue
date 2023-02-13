@@ -20,6 +20,6 @@ button {
 }
 button:hover,
 button:active {
-  color: var(--c-violet);
+  color: var(--color-text-neutral-700);
 }
 </style>

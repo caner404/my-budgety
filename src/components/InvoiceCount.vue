@@ -32,13 +32,13 @@ const invoiceCountText = computed(() => {
   letter-spacing: -0.625px;
   font-style: normal;
   font-weight: 700;
-  color: var(--c-black);
+  color: var(--color-text-dark);
 }
 .invoice-count {
   font-weight: 500;
   font-size: 1.2rem;
   line-height: 1.5rem;
   letter-spacing: -0.25px;
-  color: var(--c-dark-violet);
+  color: var(--color-text-neutral-500);
 }
 </style>

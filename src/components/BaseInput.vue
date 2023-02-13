@@ -35,8 +35,8 @@ const props = defineProps({
 </template>
 <style scoped>
 input {
-  background-color: #fff;
-  border: 1px solid #dfe3fa;
+  background-color: var(--color-background-white);
+  border: 1px solid var(--color-palette-neutral-400);
   border-radius: 4px;
   width: 100%;
   padding: 1rem;
@@ -48,10 +48,10 @@ input {
 }
 input:focus {
   outline: none;
-  border-color: var(--c-purple-light);
+  border-color: var(--color-border-primary);
 }
 label {
-  color: var(--c-violet);
+  color: var(--color-text-neutral-700);
 }
 
 .form-group {

@@ -144,7 +144,7 @@ main {
   flex-direction: column;
   gap: 2rem;
   min-height: 100vh;
-  background: #fff;
+  background: var(--color-palette-white);
   padding: 2rem;
   overflow: scroll;
   max-width: 100vw;
@@ -169,7 +169,7 @@ h1 {
   grid-gap: 1.5rem;
 }
 .heading {
-  color: var(--c-violet-dark);
+  color: var(--color-text-neutral-500);
 }
 
 .item-list {

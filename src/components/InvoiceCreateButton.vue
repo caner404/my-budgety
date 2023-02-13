@@ -16,15 +16,15 @@ import IconPlus from "./icons/IconPlus.vue";
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  color: #fff;
-  background-color: var(--c-violet-dark);
+  color: var(--color-text-white);
+  background-color: var(--color-button-create);
   border: none;
   padding: 1rem;
   border-radius: 2.4rem;
 }
 .createInvoiceButton:hover,
 .createInvoiceButton:active {
-  background-color: var(--c-purple-light);
+  background-color: var(--color-button-create-hover);
 }
 .createInvoiceIcon {
   display: flex;
@@ -33,6 +33,6 @@ import IconPlus from "./icons/IconPlus.vue";
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: var(--color-palette-white);
 }
 </style>

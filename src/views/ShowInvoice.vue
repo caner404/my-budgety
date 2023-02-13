@@ -46,7 +46,7 @@ main {
   flex-direction: column;
   gap: 2rem;
   min-height: 100vh;
-  background: #f8f8f8;
+  background: var(--color-background-neutral);
   padding: 2rem;
   overflow: scroll;
 }
@@ -56,7 +56,11 @@ main {
   padding: 2rem;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--color-palette-white);
+}
+
+.invoice-status-container p {
+  color: var(--color-text-neutral-700);
 }
 
 footer {

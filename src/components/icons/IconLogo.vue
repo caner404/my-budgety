@@ -35,7 +35,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 0px 2rem 2rem 0px;
-  background-color: var(--c-purple-deep);
+  background-color: var(--color-background-primary);
   width: 7.2rem;
   height: 7.2rem;
 }
@@ -44,7 +44,7 @@
   height: 3.6rem;
   top: 50%;
   transform: matrix(-1, 0, 0, 1, 0, 0);
-  background-color: var(--c-purple-light);
+  background-color: var(--color-background-primary-100);
   border-radius: 0rem 2rem 0rem 2rem;
 }
 </style>

@@ -69,18 +69,16 @@ const itemsTotalPrice = props.invoice.items.reduce(
 <style scoped>
 .id-route,
 p {
-  color: var(--c-violet);
+  color: var(--color-text-neutral-700);
 }
-h3 {
-  color: var(--c-black);
-}
+
 .invoice-details {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
-  background-color: #fff;
+  background-color: var(--color-background-white);
 }
 .mg-bottom-tiny {
   margin-bottom: 0.5rem;
@@ -107,7 +105,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  background-color: var(--c-invoice-items-background);
+  background-color: var(--color-background-neutral);
   padding: 3rem;
   border-radius: 0.8rem 0.8rem 0px 0px;
 }
@@ -117,7 +115,7 @@ h3 {
   align-items: center;
   justify-content: space-between;
   padding: 3rem;
-  background-color: var(--c-header-background);
+  background-color: var(--color-background-secondary);
   border-radius: 0rem 0rem 0.8rem 0.8rem;
 }
 .grand-total h5 {
@@ -125,7 +123,7 @@ h3 {
   font-size: 1.1rem;
   line-height: 1.8rem;
   letter-spacing: -0.22px;
-  color: #fff;
+  color: var(--color-palette-white);
 }
 .grand-total p {
   font-weight: 700;
@@ -133,6 +131,6 @@ h3 {
   line-height: 3.2rem;
   text-align: right;
   letter-spacing: -0.41px;
-  color: #fff;
+  color: var(--color-palette-white);
 }
 </style>

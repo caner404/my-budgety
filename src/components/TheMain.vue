@@ -34,7 +34,7 @@ main {
   flex-direction: column;
   gap: 2rem;
   min-height: 100vh;
-  background: #f8f8f8;
+  background: var(--color-background-neutral);
   padding: 2rem;
   overflow: scroll;
 }

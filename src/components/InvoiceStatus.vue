@@ -31,6 +31,7 @@ const classObject = computed(() => ({
   max-width: 10rem;
   text-align: center;
 }
+
 .invoice-status--text::before {
   content: "\2022";
   width: 1rem;

@@ -34,30 +34,30 @@ span {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   gap: 1rem;
-  background: #fff;
+  background: var(--color-background-white);
   padding: 2rem;
   box-shadow: 0px 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
   border-radius: 0.8rem;
-  border: 1px solid #fff;
+  border: 1px solid var(--color-palette-white);
   cursor: pointer;
 }
 .invoice-item:hover {
-  border: 1px solid var(--c-purple-deep);
+  border: 1px solid var(--color-border-primary);
 }
 .invoice-id span,
 .invoice-name {
-  color: var(--c-violet);
+  color: var(--color-text-neutral-700);
 }
 .invoice-name {
   text-align: right;
 }
 .invoice-date {
-  color: var(--c-dark-violet);
-}
-.invoice-status {
-  justify-self: end;
+  color: var(--color-text-neutral-500);
 }
 .invoice-total {
-  color: var(--c-black);
+  color: var(--color-text-dark);
+}
+.invoice-id {
+  color: var(--color-text-dark);
 }
 </style>

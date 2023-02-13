@@ -23,18 +23,48 @@
 
   */
 
-  --c-header-background: #373b53;
-  --c-purple-light: #9277ff;
-  --c-paid-status: #33d69f;
-  --c-black: #0c0e16;
-  --c-violet: #7e88c3;
-  --c-dark-violet: #888eb0;
-  --c-button-background-color: #dfe3fa;
-  --c-invoice-items-background: #f9fafe;
-  --c-purple-deep: #7c5dfa;
-  --c-violet-dark: #7c5dfa;
-  --c-red: #ec5757;
-  --c-danger-hover: #ff9797;
+  /* Semantic */
+  --color-palette-primary-400: #7c5dfa;
+  --color-palette-primary-100: #9277ff;
+  --color-palette-secondary-700: #252945;
+  --color-palette-secondary-800: #1e2139;
+  --color-palette-danger-400: #ec5757;
+  --color-palette-danger-100: #ff9797;
+  --color-palette-light-400: #f8f8f8;
+  --color-palette-neutral-400: #dfe3fa;
+  --color-palette-neutral-500: #888eb0;
+  --color-palette-neutral-700: #7e88c3;
+  --color-palette-dark: #0c0e16;
+  --color-palette-darker: #141625;
+  --color-palette-white: #ffffff;
+
+  /* Contextual */
+  --color-background-primary-100: var(--color-palette-primary-100);
+  --color-background-primary-100-hover: var(--color-palette-primary-100);
+  --color-button-create-hover: var(--color-palette-primary-100);
+
+  --color-border-primary: var(--color-palette-primary-400);
+  --color-background-primary: var(--color-palette-primary-400);
+  --color-button-create: var(--color-palette-primary-400);
+
+  --color-background-neutral-400: var(--color-palette-neutral-400);
+
+  --color-text-neutral-500: var(--color-palette-neutral-500);
+
+  --color-text-neutral-700: var(--color-palette-neutral-700);
+
+  --color-text-dark: var(--color-palette-dark);
+
+  --color-background-white: var(--color-palette-white);
+  --color-text-white: var(--color-palette-white);
+
+  --color-background-neutral: var(--color-palette-light-400);
+  --color-background-neutral-hover: var(--color-palette-neutral-400);
+
+  --color-background-secondary: var(--color-palette-secondary-700);
+
+  --color-background-danger: var(--color-palette-danger-400);
+  --color-background-danger-hover: var(--color-palette-danger-100);
 }
 
 /* semantic color variables for this project */

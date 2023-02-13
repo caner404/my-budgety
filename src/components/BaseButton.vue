@@ -21,30 +21,30 @@ const classObject = computed(() => ({
 <style scoped>
 button {
   cursor: pointer;
-  color: #fff;
+  color: var(--color-palette-white);
   border-radius: 2.4rem;
   padding: 1.5rem 2.4rem;
 }
 .violet {
-  background-color: var(--c-violet-dark);
+  background-color: var(--color-background-primary);
 }
 .violet:hover,
 .violet.active {
-  background-color: var(--c-purple-light);
+  background-color: var(--color-background-primary-100-hover);
 }
 .grey {
   color: #7e88c3;
-  background-color: var(--c-invoice-items-background);
+  background-color: var(--color-background-neutral);
 }
 .grey:hover,
 .grey:active {
-  background-color: var(--c-button-background-color);
+  background-color: var(--color-background-neutral-hover);
 }
 .red {
-  background-color: var(--c-red);
+  background-color: var(--color-background-danger);
 }
 .red:hover,
 .red:active {
-  background-color: var(--c-danger-hover);
+  background-color: var(--color-background-danger-hover);
 }
 </style>
