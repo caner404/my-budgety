@@ -6,6 +6,7 @@ import { useRoute } from "vue-router";
 import { computed } from "vue";
 import type { Invoice } from "@/types/InvoiceModule";
 import BaseButton from "@/components/BaseButton.vue";
+import BaseInput from "@/components/BaseInput.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
@@ -20,79 +21,95 @@ const invoice: Invoice = computed(() =>
     <h1>Edit #{{ invoice.id }}</h1>
     <div class="sender-information">
       <p class="heading bold">Bill from</p>
-      <div class="form-group sender--address">
-        <label><p>Street Address</p></label>
-        <input type="text" :value="invoice.senderAddress.street" />
-      </div>
-      <div class="form-group sender--city">
-        <label><p>City</p></label>
-        <input type="text" :value="invoice.senderAddress.city" />
-      </div>
-      <div class="form-group sender--postCode">
-        <label><p>Post Code</p></label>
-        <input type="text" :value="invoice.senderAddress.postCode" />
-      </div>
-      <div class="form-group sender--country">
-        <label><p>Country</p></label>
-        <input type="text" :value="invoice.senderAddress.country" />
-      </div>
+      <BaseInput
+        type="text"
+        :value="invoice.senderAddress.street"
+        label="Street Address"
+        class="sender--address"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.senderAddress.city"
+        label="City"
+        class="sender--city"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.senderAddress.postCode"
+        label="Post Code"
+        class="sender--postCode"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.senderAddress.country"
+        label="Country"
+        class="sender--country"
+      />
     </div>
     <div class="client-information">
       <p class="heading bold">Bill to</p>
-      <div class="form-group client--name">
-        <label><p>Client's name</p></label>
-        <input type="text" :value="invoice.clientName" />
-      </div>
-      <div class="form-group client--email">
-        <label><p>Client's Email</p></label>
-        <input type="text" :value="invoice.clientEmail" />
-      </div>
-      <div class="form-group client--address">
-        <label><p>Street Address</p></label>
-        <input type="text" :value="invoice.clientAddress.street" />
-      </div>
-      <div class="form-group client--city">
-        <label><p>City</p></label>
-        <input type="text" :value="invoice.clientAddress.city" />
-      </div>
-      <div class="form-group client--postCode">
-        <label><p>Post Code</p></label>
-        <input type="text" :value="invoice.clientAddress.postCode" />
-      </div>
-      <div class="form-group client--country">
-        <label><p>Country</p></label>
-        <input type="text" :value="invoice.clientAddress.country" />
-      </div>
-      <div class="form-group client--description">
-        <label><p>Project Description</p></label>
-        <input type="text" :value="invoice.description" />
-      </div>
+      <BaseInput
+        type="text"
+        :value="invoice.clientName"
+        label="Clients name"
+        class="client--name"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.clientEmail"
+        label="Clients email"
+        class="client--email"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.clientAddress.street"
+        label="Street Address"
+        class="client--address"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.clientAddress.city"
+        label="City"
+        class="client--city"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.clientAddress.postCode"
+        label="Post Code"
+        class="client--postCode"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.clientAddress.country"
+        label="Country"
+        class="client--country"
+      />
+      <BaseInput
+        type="text"
+        :value="invoice.description"
+        label="Project Description"
+        class="client--description"
+      />
     </div>
     <div class="item-list">
       <h2>Item List</h2>
       <div class="item" v-for="item in invoice.items">
-        <div class="form-group item--name">
-          <label><p>Item Name</p></label>
-          <input type="text" :value="item.name" />
-        </div>
+        <BaseInput
+          type="text"
+          :value="item.name"
+          label="Item Name"
+          class="item--name"
+        />
+
         <div class="item-cost">
-          <div class="form-group">
-            <label><p>Qty.</p></label>
-            <input type="number" :value="item.quantity" />
-          </div>
-          <div class="form-group">
-            <label><p>Price</p></label>
-            <input type="number" :value="item.price" />
-          </div>
-          <div class="form-group">
-            <label><p>Total</p></label>
-            <input
-              type="number"
-              :value="item.total"
-              disabled
-              class="item-total-input"
-            />
-          </div>
+          <BaseInput type="number" :value="item.quantity" label="Qty." />
+          <BaseInput type="number" :value="item.price" label="Price" />
+          <BaseInput
+            type="number"
+            :value="item.total"
+            label="Total"
+            :disabled="true"
+          />
           <IconDelete class="flex-align-center" />
         </div>
       </div>
@@ -154,21 +171,7 @@ h1 {
 .heading {
   color: var(--c-violet-dark);
 }
-input {
-  background-color: #fff;
-  border: 1px solid #dfe3fa;
-  border-radius: 4px;
-  width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -0.25px;
-  box-sizing: border-box; /* ignores box-sizing setting in base.css???*/
-}
-label {
-  color: var(--c-violet);
-}
+
 .item-list {
   display: flex;
   flex-direction: column;
@@ -195,21 +198,11 @@ label {
 .item-cost > * {
   flex: 1;
 }
-.item-total-input {
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 1rem 0;
-}
 .flex-align-center {
   margin-top: 1.5rem;
   align-self: center;
 }
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+
 .sender--address {
   grid-row: 2;
   grid-column: 1 / span 2;

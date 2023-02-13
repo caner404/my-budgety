@@ -18,4 +18,8 @@ button {
   background: none;
   border: none;
 }
+button:hover,
+button:active {
+  color: var(--c-violet);
+}
 </style>

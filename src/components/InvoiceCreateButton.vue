@@ -10,6 +10,7 @@ import IconPlus from "./icons/IconPlus.vue";
   </button>
 </template>
 <style scoped>
+.createInvoiceButton,
 .createInvoiceButton {
   display: flex;
   justify-content: center;
@@ -21,7 +22,10 @@ import IconPlus from "./icons/IconPlus.vue";
   padding: 1rem;
   border-radius: 2.4rem;
 }
-
+.createInvoiceButton:hover,
+.createInvoiceButton:active {
+  background-color: var(--c-purple-light);
+}
 .createInvoiceIcon {
   display: flex;
   justify-content: center;

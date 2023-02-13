@@ -28,11 +28,23 @@ button {
 .violet {
   background-color: var(--c-violet-dark);
 }
+.violet:hover,
+.violet.active {
+  background-color: var(--c-purple-light);
+}
 .grey {
   color: #7e88c3;
   background-color: var(--c-invoice-items-background);
 }
+.grey:hover,
+.grey:active {
+  background-color: var(--c-button-background-color);
+}
 .red {
   background-color: var(--c-red);
+}
+.red:hover,
+.red:active {
+  background-color: var(--c-danger-hover);
 }
 </style>

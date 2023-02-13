@@ -34,6 +34,7 @@
   --c-purple-deep: #7c5dfa;
   --c-violet-dark: #7c5dfa;
   --c-red: #ec5757;
+  --c-danger-hover: #ff9797;
 }
 
 /* semantic color variables for this project */
@@ -79,6 +80,7 @@ html {
 button {
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 a {

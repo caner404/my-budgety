@@ -39,6 +39,9 @@ const props = defineProps({
   height: 1.6rem;
   border-radius: 2px;
 }
+.filterItem button {
+  border-color: var(--c-violet-dark);
+}
 .filterItem button.itemClicked {
   background-color: var(--c-violet-dark);
 }

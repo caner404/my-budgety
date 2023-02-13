@@ -34,11 +34,15 @@ span {
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   gap: 1rem;
-  background: #ffffff;
+  background: #fff;
   padding: 2rem;
   box-shadow: 0px 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
   border-radius: 0.8rem;
+  border: 1px solid #fff;
   cursor: pointer;
+}
+.invoice-item:hover {
+  border: 1px solid var(--c-purple-deep);
 }
 .invoice-id span,
 .invoice-name {
