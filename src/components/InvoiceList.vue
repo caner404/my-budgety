@@ -18,9 +18,8 @@ const props = defineProps({
       :to="{ name: 'InvoicesShow', params: { id: invoice.id } }"
       custom
       v-slot="{ navigate }"
-      data-test="router-link"
     >
-      <InvoiceListItem :item="invoice" @click="navigate" role="link" />
+      <InvoiceListItem :item="invoice" @click="navigate" role="router-link" />
     </router-link>
   </ul>
 </template>

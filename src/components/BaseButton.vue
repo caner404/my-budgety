@@ -11,6 +11,7 @@ const classObject = computed(() => ({
   grey: props.mode === "grey",
   red: props.mode === "red",
   violet: props.mode === "violet",
+  dark: props.mode === "dark",
 }));
 </script>
 <template>
@@ -46,5 +47,9 @@ button {
 .red:hover,
 .red:active {
   background-color: var(--color-background-danger-hover);
+}
+.dark {
+  color: var(--color-text-neutral-500);
+  background-color: var(--color-background-secondary);
 }
 </style>

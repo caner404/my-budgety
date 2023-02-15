@@ -89,5 +89,32 @@ export const useInvoiceStore = defineStore("invoice", {
       }
       return this.invoiceDataByStatus;
     },
+    getNewInvoice(): InvoiceModule.Invoice {
+      console.log(`Create new Invoice`);
+      return {
+        id: "",
+        createdAt: "",
+        paymentDue: "",
+        description: "",
+        paymentTerms: 0,
+        status: InvoiceModule.InvoiceStatus.Draft,
+        total: 0,
+        clientName: "",
+        clientEmail: "",
+        clientAddress: {
+          street: "",
+          city: "",
+          postCode: "",
+          country: "",
+        },
+        senderAddress: {
+          street: "",
+          city: "",
+          postCode: "",
+          country: "",
+        },
+        items: [],
+      };
+    },
   },
 });

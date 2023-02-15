@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { createTestingPinia } from "@pinia/testing";
 import { useInvoiceStore } from "@/stores/invoice";
 import { InvoiceStatus, type Invoice } from "@/types/InvoiceModule";
@@ -6,11 +6,20 @@ import {
   createInvoiceData,
   createInvoiceFilterData,
 } from "@/stores/__tests__/invoiceHelper";
+import { createRouter, createWebHashHistory, type Router } from "vue-router";
+import { routes } from "@/router";
 
 import { shallowMount } from "@vue/test-utils";
 import TheMain from "@/components/TheMain.vue";
 
 describe("TheMain.vue", () => {
+  let router: Router;
+  beforeEach(async () => {
+    router = createRouter({
+      history: createWebHashHistory(),
+      routes: routes,
+    });
+  });
   it("renders properly the List of invoices", () => {
     let invoiceArr: Invoice[] = createInvoiceData();
     const wrapper = shallowMount(TheMain, {
@@ -24,6 +33,7 @@ describe("TheMain.vue", () => {
               },
             },
           }),
+          router,
         ],
       },
     });
@@ -47,6 +57,7 @@ describe("TheMain.vue", () => {
               },
             },
           }),
+          router,
         ],
       },
     });
@@ -71,6 +82,7 @@ describe("TheMain.vue", () => {
               },
             },
           }),
+          router,
         ],
       },
     });
@@ -96,6 +108,7 @@ describe("TheMain.vue", () => {
               },
             },
           }),
+          router,
         ],
       },
     });

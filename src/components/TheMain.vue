@@ -22,7 +22,13 @@ const show = store.isInvoicesEmpty;
     <div class="main-subheading">
       <InvoiceCount />
       <InvoiceFilter />
-      <InvoiceCreateButton />
+      <router-link
+        :to="{ name: 'InvoicesCreate' }"
+        custom
+        v-slot="{ navigate }"
+      >
+        <InvoiceCreateButton @click="navigate" role="router-link" />
+      </router-link>
     </div>
     <InvoiceListEmpty v-if="show" />
     <InvoiceList v-else :invoices="invoicesData" />

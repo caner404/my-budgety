@@ -8,19 +8,23 @@ import InvoiceEditTemplate from "@/components/InvoiceEditTemplate.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
-const invoice: Invoice = computed(() =>
-  store.getInvoiceById(route.params.id)
-).value;
+const invoice: Invoice = computed(() => {
+  if (route.params.id) return store.getInvoiceById(route.params.id);
+  return store.getNewInvoice();
+}).value;
 </script>
 <template>
   <InvoiceEditTemplate :invoice="invoice" />
+  <div class="bottomShadowEffect"></div>
   <footer>
-    <BaseButton mode="" />
     <BaseButton mode="grey">
-      <p class="bold">Cancel</p>
+      <p class="bold">Discard</p>
+    </BaseButton>
+    <BaseButton mode="dark">
+      <p class="bold">Save as Draft</p>
     </BaseButton>
     <BaseButton mode="violet">
-      <p class="bold">Save Changes</p>
+      <p class="bold">Save & send</p>
     </BaseButton>
   </footer>
 </template>
