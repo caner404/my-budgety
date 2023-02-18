@@ -16,7 +16,7 @@ const invoice: Invoice = computed(() =>
   <InvoiceEditTemplate :invoice="invoice" />
   <footer>
     <BaseButton mode="" />
-    <BaseButton mode="grey">
+    <BaseButton mode="grey" @click="$router.back()">
       <p class="bold">Cancel</p>
     </BaseButton>
     <BaseButton mode="violet">

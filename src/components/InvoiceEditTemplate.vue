@@ -127,11 +127,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  min-height: 100vh;
-  background: var(--color-palette-white);
   padding: 2rem;
-  overflow: scroll;
-  max-width: 100vw;
+  background: var(--color-palette-white);
 }
 
 .bottomShadowEffect {
