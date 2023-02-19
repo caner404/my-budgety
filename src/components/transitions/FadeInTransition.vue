@@ -15,6 +15,6 @@
 }
 .fadeIn-enter-active,
 .fadeIn-leave-active {
-  animation: fade-in 0.8s ease-in;
+  animation: fade-in var(--animation-duration) ease-in;
 }
 </style>

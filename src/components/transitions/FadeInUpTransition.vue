@@ -17,6 +17,6 @@
 }
 .fadeInUp-enter-active,
 .fadeInUp-leave-active {
-  animation: fade-in-up 0.8s ease-in;
+  animation: fade-in-up var(--animation-duration) ease-in;
 }
 </style>
