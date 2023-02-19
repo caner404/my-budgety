@@ -5,6 +5,7 @@ import { computed } from "vue";
 import type { Invoice } from "@/types/InvoiceModule";
 import BaseButton from "@/components/BaseButton.vue";
 import InvoiceEditTemplate from "@/components/InvoiceEditTemplate.vue";
+import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
@@ -14,19 +15,23 @@ const invoice: Invoice = computed(() => {
 }).value;
 </script>
 <template>
-  <InvoiceEditTemplate :invoice="invoice" />
-  <div class="bottomShadowEffect"></div>
-  <footer>
-    <BaseButton mode="grey">
-      <p class="bold">Discard</p>
-    </BaseButton>
-    <BaseButton mode="dark">
-      <p class="bold">Save as Draft</p>
-    </BaseButton>
-    <BaseButton mode="violet">
-      <p class="bold">Save & send</p>
-    </BaseButton>
-  </footer>
+  <FadeInTransition>
+    <div class="createView">
+      <InvoiceEditTemplate :invoice="invoice" />
+      <div class="bottomShadowEffect"></div>
+      <footer>
+        <BaseButton mode="grey" @click="$router.back()">
+          <p class="bold">Discard</p>
+        </BaseButton>
+        <BaseButton mode="dark">
+          <p class="bold">Save as Draft</p>
+        </BaseButton>
+        <BaseButton mode="violet">
+          <p class="bold">Save & send</p>
+        </BaseButton>
+      </footer>
+    </div>
+  </FadeInTransition>
 </template>
 <style scoped>
 footer {

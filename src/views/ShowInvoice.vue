@@ -7,6 +7,7 @@ import InvoiceDetailed from "@/components/InvoiceDetailed.vue";
 import InvoiceStatus from "@/components/InvoiceStatus.vue";
 import BaseButton from "@/components/BaseButton.vue";
 import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
+import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
 import * as InvoiceModule from "@/types/InvoiceModule";
 
 const route = useRoute();
@@ -19,37 +20,41 @@ const invoice: InvoiceModule.Invoice = computed(() =>
 const showDeleteModal = ref(false);
 </script>
 <template>
-  <main>
-    <InvoiceGoBack />
-    <div class="invoice-status-container">
-      <p>Status</p>
-      <InvoiceStatus :itemStatus="invoice?.status" />
+  <FadeInTransition>
+    <div class="showView">
+      <main>
+        <InvoiceGoBack />
+        <div class="invoice-status-container">
+          <p>Status</p>
+          <InvoiceStatus :itemStatus="invoice?.status" />
+        </div>
+        <InvoiceDetailed :invoice="invoice" />
+      </main>
+      <footer>
+        <BaseButton mode="grey">
+          <router-link
+            :to="{ name: 'InvoicesEdit', params: { id: paramId } }"
+            class="router-link bold"
+            >Edit</router-link
+          >
+        </BaseButton>
+        <BaseButton mode="red">
+          <p class="bold" @click="showDeleteModal = !showDeleteModal">Delete</p>
+        </BaseButton>
+        <BaseButton
+          mode="violet"
+          v-if="invoice.status !== InvoiceModule.InvoiceStatus.Paid"
+        >
+          <p class="bold">Mark as paid</p>
+        </BaseButton>
+      </footer>
+      <DeleteModalDialog
+        v-if="showDeleteModal"
+        :id="invoice.id"
+        @close-modal="(toClose) => (showDeleteModal = toClose)"
+      />
     </div>
-    <InvoiceDetailed :invoice="invoice" />
-  </main>
-  <footer>
-    <BaseButton mode="grey">
-      <router-link
-        :to="{ name: 'InvoicesEdit', params: { id: paramId } }"
-        class="router-link bold"
-        >Edit</router-link
-      >
-    </BaseButton>
-    <BaseButton mode="red">
-      <p class="bold" @click="showDeleteModal = !showDeleteModal">Delete</p>
-    </BaseButton>
-    <BaseButton
-      mode="violet"
-      v-if="invoice.status !== InvoiceModule.InvoiceStatus.Paid"
-    >
-      <p class="bold">Mark as paid</p>
-    </BaseButton>
-  </footer>
-  <DeleteModalDialog
-    v-if="showDeleteModal"
-    :id="invoice.id"
-    @close-modal="(toClose) => (showDeleteModal = toClose)"
-  />
+  </FadeInTransition>
 </template>
 <style scoped>
 main {
