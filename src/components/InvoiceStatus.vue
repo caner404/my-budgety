@@ -25,11 +25,14 @@ const classObject = computed(() => ({
 <style scoped>
 .invoice-status {
   justify-self: end;
-  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   mix-blend-mode: normal;
-  padding: 1.5rem 3rem;
-  max-width: 10rem;
+  width: 10rem;
+  height: 4rem;
   text-align: center;
+  border-radius: 0.6rem;
 }
 
 .invoice-status--text::before {

@@ -18,6 +18,7 @@ export enum InvoiceStatus {
   Pending = "Pending",
   Draft = "Draft",
   NONE = "None",
+  TOTAL = "Total",
 }
 
 export interface Address {

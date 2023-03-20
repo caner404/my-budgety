@@ -23,8 +23,9 @@ const props = defineProps({
   </div>
 </template>
 <style scoped>
-p {
-  color: var(--c-violet);
+p,
+span {
+  color: var(--color-text-neutral-700);
 }
 h3 {
   color: var(--c-black);
@@ -37,5 +38,11 @@ h3 {
 .item-details {
   display: flex;
   flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .item-details,
+  .invoice-item-price {
+    display: contents;
+  }
 }
 </style>

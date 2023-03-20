@@ -45,6 +45,9 @@
   --color-background-danger-hover: var(--color-palette-danger-100);
 
   --animation-duration: 0.8s;
+
+  --padding-sm: 2rem;
+  --padding-md: 4rem;
 }
 
 @media (prefers-color-scheme: dark) {

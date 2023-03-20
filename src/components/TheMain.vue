@@ -51,4 +51,10 @@ main {
   align-items: center;
   gap: 2rem;
 }
+
+@media screen and (min-width: 768px) {
+  main {
+    padding: var(--padding-md);
+  }
+}
 </style>

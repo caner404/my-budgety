@@ -1,22 +1,36 @@
 <script setup lang="ts">
 import { useInvoiceStore } from "@/stores/invoice";
+import { InvoiceStatus } from "@/types/InvoiceModule";
 import { computed } from "vue";
 
 const store = useInvoiceStore();
 const count = computed(() => {
   return store.getInvoicesCount;
 });
-const invoiceCountText = computed(() => {
+const status = computed(() => store.getInvoiceFilterStatus);
+const invoiceCountTextMobile = computed(() => {
   if (count.value <= 0) return `No invoices`;
   if (count.value === 1) return `1 invoice`;
   return `${count.value} invoices`;
 });
+const invoiceCountTextLarge = computed(() => {
+  let statusText = status.value;
+  if (status.value.match(InvoiceStatus.NONE)) statusText = InvoiceStatus.TOTAL;
+  if (count.value <= 0) return `There are no invoices`;
+  if (count.value === 1)
+    return `There is 1 ${statusText.toLowerCase()} invoice`;
+  return `There are ${count.value} ${statusText.toLowerCase()} invoices`;
+});
 </script>
 <template>
   <div class="invoiceCount">
-    <h2 class="invoice-heading">Invoices</h2>
-    <p class="invoice-count" data-test="invoice-count">
-      {{ invoiceCountText }}
+    <h2 class="invoice-heading heading-mobile">Invoices</h2>
+    <h1 class="invoice-heading heading-medium">Invoices</h1>
+    <p class="invoice-count count-mobile" data-test="invoice-count">
+      {{ invoiceCountTextMobile }}
+    </p>
+    <p class="invoice-count count-medium" data-test="invoice-count">
+      {{ invoiceCountTextLarge }}
     </p>
   </div>
 </template>
@@ -26,19 +40,25 @@ const invoiceCountText = computed(() => {
   flex-direction: column;
   gap: 0.5rem;
 }
+.heading-medium,
+.count-medium {
+  display: none;
+}
 .invoice-heading {
-  font-size: 2rem;
-  line-height: 2.2rem;
-  letter-spacing: -0.625px;
-  font-style: normal;
-  font-weight: 700;
   color: var(--color-text-dark);
 }
 .invoice-count {
-  font-weight: 500;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
-  letter-spacing: -0.25px;
   color: var(--color-text-neutral-500);
+}
+
+@media screen and (min-width: 768px) {
+  .heading-mobile,
+  .count-mobile {
+    display: none;
+  }
+  .heading-medium,
+  .count-medium {
+    display: block;
+  }
 }
 </style>

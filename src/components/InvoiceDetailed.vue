@@ -57,11 +57,17 @@ const itemsTotalPrice = props.invoice.items.reduce(
     </div>
     <div class="item-listings">
       <div class="items">
-        <InvoiceItem v-for="item in invoiceItems" :item="item" />
+        <div class="items-heading">
+          <p>Item name</p>
+          <p>QTY.</p>
+          <p>Price</p>
+          <p class="items-heading-total">Total</p>
+        </div>
+        <InvoiceItem v-for="item in invoiceItems" :item="item" class="item" />
       </div>
       <div class="grand-total">
         <h5>Grand Total</h5>
-        <p>&euro;{{ itemsTotalPrice }}</p>
+        <p class="grand-total-price">&euro;{{ itemsTotalPrice }}</p>
       </div>
     </div>
   </div>
@@ -101,13 +107,18 @@ p {
   flex-direction: column;
 }
 
-.items {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.item-listings {
   background-color: var(--color-background-neutral);
+}
+.items {
   padding: 3rem;
   border-radius: 0.8rem 0.8rem 0px 0px;
+}
+.items-heading {
+  display: none;
+}
+.items > *:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 .grand-total {
@@ -132,5 +143,39 @@ p {
   text-align: right;
   letter-spacing: -0.41px;
   color: var(--color-palette-white);
+}
+
+@media screen and (min-width: 768px) {
+  .invoice-details {
+    padding: 4rem;
+  }
+
+  .item,
+  .items-heading {
+    display: contents;
+  }
+  .items,
+  .grand-total {
+    display: grid;
+    grid-template-columns: 50% repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .items-heading {
+    grid-row: 1;
+  }
+
+  .item {
+    grid-row: 2;
+  }
+
+  .grand-total {
+    grid-row: 3;
+  }
+  .grand-total p {
+    grid-column: 4;
+    justify-self: center;
+    font-size: 2.4rem;
+    line-height: 3.2rem;
+  }
 }
 </style>

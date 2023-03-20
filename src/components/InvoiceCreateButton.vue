@@ -6,7 +6,8 @@ import IconPlus from "./icons/IconPlus.vue";
     <div class="createInvoiceIcon">
       <IconPlus />
     </div>
-    <h4>New</h4>
+    <h4 class="onMobile">New</h4>
+    <h4>New Invoice</h4>
   </button>
 </template>
 <style scoped>
@@ -34,5 +35,19 @@ import IconPlus from "./icons/IconPlus.vue";
   height: 3.2rem;
   border-radius: 50%;
   background-color: var(--color-palette-white);
+}
+h4 {
+  color: var(--);
+}
+h4:not(.onMobile) {
+  display: none;
+}
+@media screen and (min-width: 768px) {
+  .onMobile {
+    display: none;
+  }
+  h4:not(.onMobile) {
+    display: block;
+  }
 }
 </style>

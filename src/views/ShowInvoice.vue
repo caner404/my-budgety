@@ -1,52 +1,39 @@
 <script setup lang="ts">
 import { useInvoiceStore } from "@/stores/invoice";
+import type { Invoice } from "@/types/InvoiceModule";
 import { useRoute } from "vue-router";
-import { computed, ref } from "vue";
+import { computed, provide, ref } from "vue";
 import InvoiceGoBack from "@/components/InvoiceGoBack.vue";
 import InvoiceDetailed from "@/components/InvoiceDetailed.vue";
-import InvoiceStatus from "@/components/InvoiceStatus.vue";
-import BaseButton from "@/components/BaseButton.vue";
+import InvoiceStatusContainer from "@/components/InvoiceStatusContainer.vue";
 import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
 import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
-import * as InvoiceModule from "@/types/InvoiceModule";
+import InvoiceStatusActions from "@/components/InvoiceStatusActions.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
 const paramId = route.params.id;
-const invoice: InvoiceModule.Invoice = computed(() =>
+const invoice: Invoice = computed(() =>
   store.getInvoiceById(route.params.id)
 ).value;
 
 const showDeleteModal = ref(false);
+
+const openModal = () => {
+  showDeleteModal.value = true;
+};
+provide("openModal", openModal);
 </script>
 <template>
   <FadeInTransition>
     <div class="showView">
       <main>
         <InvoiceGoBack />
-        <div class="invoice-status-container">
-          <p>Status</p>
-          <InvoiceStatus :itemStatus="invoice?.status" />
-        </div>
+        <InvoiceStatusContainer :invoice="invoice" />
         <InvoiceDetailed :invoice="invoice" />
       </main>
       <footer>
-        <BaseButton mode="grey">
-          <router-link
-            :to="{ name: 'InvoicesEdit', params: { id: paramId } }"
-            class="router-link bold"
-            >Edit</router-link
-          >
-        </BaseButton>
-        <BaseButton mode="red">
-          <p class="bold" @click="showDeleteModal = !showDeleteModal">Delete</p>
-        </BaseButton>
-        <BaseButton
-          mode="violet"
-          v-if="invoice.status !== InvoiceModule.InvoiceStatus.Paid"
-        >
-          <p class="bold">Mark as paid</p>
-        </BaseButton>
+        <InvoiceStatusActions :invoice="invoice" />
       </footer>
       <DeleteModalDialog
         v-if="showDeleteModal"
@@ -66,25 +53,16 @@ main {
   padding: 2rem;
 }
 
-.invoice-status-container {
-  display: flex;
-  padding: 2rem;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-palette-white);
-}
-
-.invoice-status-container p {
-  color: var(--color-text-neutral-700);
-}
-
 footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   padding: 2rem;
 }
-.router-link {
-  color: var(--color-text-neutral-500);
+
+@media screen and (min-width: 768px) {
+  main {
+    min-height: 100vh;
+  }
+  footer {
+    display: none;
+  }
 }
 </style>

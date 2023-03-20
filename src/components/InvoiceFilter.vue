@@ -9,7 +9,8 @@ const showDropdown = ref(false);
 <template>
   <div class="filter">
     <div class="filter-text" @click="showDropdown = !showDropdown">
-      <h4 class="filter-description">Filter</h4>
+      <h4 class="filter-description onMobile">Filter</h4>
+      <h4 class="filter-description">Filter by status</h4>
       <IconArrowDown :changeArrow="showDropdown" />
     </div>
     <InvoiceFilterDropdown v-show="showDropdown" />
@@ -32,5 +33,20 @@ const showDropdown = ref(false);
   justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+}
+h4 {
+  color: var(--color-text-dark);
+}
+h4:not(.onMobile) {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .onMobile {
+    display: none;
+  }
+  h4:not(.onMobile) {
+    display: block;
+  }
 }
 </style>

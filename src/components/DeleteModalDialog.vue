@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import BaseButton from "@/components/BaseButton.vue";
 
-const props = defineProps({
+defineProps({
   id: {
     type: String,
     required: true,
@@ -20,7 +20,7 @@ const props = defineProps({
         <BaseButton mode="grey" @click="$emit('closeModal', false)">
           <p class="bold">Cancel</p>
         </BaseButton>
-        <BaseButton mode="red">
+        <BaseButton mode="red" @click="$emit('closeModal', false)">
           <p class="bold">Delete</p>
         </BaseButton>
       </div>

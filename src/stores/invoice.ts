@@ -27,7 +27,7 @@ export const useInvoiceStore = defineStore("invoice", {
     getInvoicesByStatus: (state) => {
       return state.invoiceDataByStatus;
     },
-    getInvoiceFilterStatus: (state) => {
+    getInvoiceFilterStatus: (state): InvoiceModule.InvoiceStatus => {
       return state.invoiceFilterStatus;
     },
     getInvoiceById: (state) => {
