@@ -17,44 +17,47 @@ const itemsTotalPrice = props.invoice.items.reduce(
 </script>
 <template>
   <div class="invoice-details">
-    <div class="subheading">
-      <h4 class="id"><span class="id-route">#</span>{{ invoice.id }}</h4>
-      <p>{{ invoice.description }}</p>
-    </div>
-    <div class="senderAddress">
-      <p>{{ invoice.senderAddress.street }}</p>
-      <p>{{ invoice.senderAddress.city }}</p>
-      <p>{{ invoice.senderAddress.postCode }}</p>
-      <p>{{ invoice.senderAddress.country }}</p>
-    </div>
-    <div class="invoice-grid">
-      <div class="dates">
-        <div class="invoice-created">
-          <p class="mg-bottom-tiny">Invoice Date</p>
-          <h3>{{ invoice.createdAt }}</h3>
+    <div class="invoice-contact-info">
+      <div class="subheading">
+        <h4 class="id"><span class="id-route">#</span>{{ invoice.id }}</h4>
+        <p>{{ invoice.description }}</p>
+      </div>
+      <div class="senderAddress">
+        <p>{{ invoice.senderAddress.street }}</p>
+        <p>{{ invoice.senderAddress.city }}</p>
+        <p>{{ invoice.senderAddress.postCode }}</p>
+        <p>{{ invoice.senderAddress.country }}</p>
+      </div>
+      <div class="invoice-grid">
+        <div class="dates">
+          <div class="invoice-created">
+            <p class="mg-bottom-tiny">Invoice Date</p>
+            <h3>{{ invoice.createdAt }}</h3>
+          </div>
+          <div class="invoice-due">
+            <p class="mg-bottom-tiny">Payment Due</p>
+            <h3>{{ invoice.paymentDue }}</h3>
+          </div>
         </div>
-        <div class="invoice-due">
-          <p class="mg-bottom-tiny">Payment Due</p>
-          <h3>{{ invoice.paymentDue }}</h3>
+        <div class="person-details">
+          <div class="client-name">
+            <p class="mg-bottom-tiny">Bill to</p>
+            <h3>{{ invoice.clientName }}</h3>
+          </div>
+          <div class="client-address">
+            <p>{{ invoice.clientAddress.street }}</p>
+            <p>{{ invoice.clientAddress.city }}</p>
+            <p>{{ invoice.clientAddress.postCode }}</p>
+            <p>{{ invoice.clientAddress.country }}</p>
+          </div>
         </div>
       </div>
-      <div class="person-details">
-        <div class="client-name">
-          <p class="mg-bottom-tiny">Bill to</p>
-          <h3>{{ invoice.clientName }}</h3>
-        </div>
-        <div class="client-address">
-          <p>{{ invoice.clientAddress.street }}</p>
-          <p>{{ invoice.clientAddress.city }}</p>
-          <p>{{ invoice.clientAddress.postCode }}</p>
-          <p>{{ invoice.clientAddress.country }}</p>
-        </div>
+      <div class="clientEmail">
+        <p>Sent to</p>
+        <h3>{{ invoice.clientEmail }}</h3>
       </div>
     </div>
-    <div class="clientEmail">
-      <p>Sent to</p>
-      <h3>{{ invoice.clientEmail }}</h3>
-    </div>
+
     <div class="item-listings">
       <div class="items">
         <div class="items-heading">
@@ -85,6 +88,12 @@ p {
   gap: 2rem;
   padding: 2rem;
   background-color: var(--color-background-white);
+}
+.invoice-contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
 }
 .mg-bottom-tiny {
   margin-bottom: 0.5rem;
@@ -146,8 +155,28 @@ p {
 }
 
 @media screen and (min-width: 768px) {
-  .invoice-details {
-    padding: 4rem;
+  .invoice-contact-info {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .subheading {
+    grid-row: 1;
+    grid-column: 1 / span 3;
+  }
+  .senderAddress {
+    grid-row: 1;
+    grid-column: 4;
+    justify-self: end;
+    text-align: right;
+  }
+  .invoice-grid {
+    display: contents;
+    grid-row: 2;
+    grid-column: 1 / span 2;
+  }
+  .clientEmail {
+    grid-row: 2;
+    grid-column: 3 / 5;
   }
 
   .item,
