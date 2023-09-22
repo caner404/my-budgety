@@ -16,12 +16,12 @@ import IconPlus from "./icons/IconPlus.vue";
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 0.625rem;
   color: var(--color-text-white);
   background-color: var(--color-button-create);
   border: none;
-  padding: 1rem;
-  border-radius: 2.4rem;
+  padding: 0.625rem;
+  border-radius: 1.5rem;
 }
 .createInvoiceButton:hover,
 .createInvoiceButton:active {
@@ -31,8 +31,8 @@ import IconPlus from "./icons/IconPlus.vue";
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 3.2rem;
-  height: 3.2rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   background-color: var(--color-palette-white);
 }

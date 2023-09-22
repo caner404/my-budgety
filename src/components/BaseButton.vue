@@ -23,8 +23,8 @@ const classObject = computed(() => ({
 button {
   cursor: pointer;
   color: var(--color-palette-white);
-  border-radius: 2.4rem;
-  padding: 1.5rem 2.4rem;
+  border-radius: 1.5rem;
+  padding: 0.9rem 1.5rem;
 }
 .violet {
   background-color: var(--color-background-primary);

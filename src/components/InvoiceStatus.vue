@@ -29,8 +29,8 @@ const classObject = computed(() => ({
   align-items: center;
   justify-content: center;
   mix-blend-mode: normal;
-  width: 10rem;
-  height: 4rem;
+  width: 6.25rem;
+  height: 2.5rem;
   text-align: center;
   border-radius: 0.6rem;
 }

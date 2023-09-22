@@ -10,10 +10,7 @@ const props = defineProps({
   },
 });
 const invoiceItems = props.invoice.items;
-const itemsTotalPrice = props.invoice.items.reduce(
-  (accu, curr) => accu + curr.total,
-  0
-);
+const itemsTotalPrice = props.invoice.items.reduce((accu, curr) => accu + curr.total, 0);
 </script>
 <template>
   <div class="invoice-details">
@@ -85,15 +82,15 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1.25rem;
+  padding: 1.25rem;
   background-color: var(--color-background-white);
 }
 .invoice-contact-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.25rem;
 }
 .mg-bottom-tiny {
   margin-bottom: 0.5rem;
@@ -108,7 +105,7 @@ p {
   flex: 1;
 }
 .dates {
-  gap: 1.5rem;
+  gap: 0.9rem;
 }
 .person-details,
 .dates {
@@ -120,7 +117,7 @@ p {
   background-color: var(--color-background-neutral);
 }
 .items {
-  padding: 3rem;
+  padding: 1.875rem;
   border-radius: 0.8rem 0.8rem 0px 0px;
 }
 .items-heading {
@@ -134,21 +131,21 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3rem;
+  padding: 1.875rem;
   background-color: var(--color-background-secondary);
   border-radius: 0rem 0rem 0.8rem 0.8rem;
 }
 .grand-total h5 {
   font-weight: 500;
   font-size: 1.1rem;
-  line-height: 1.8rem;
+  line-height: 1.125rem;
   letter-spacing: -0.22px;
   color: var(--color-palette-white);
 }
 .grand-total p {
   font-weight: 700;
-  font-size: 2rem;
-  line-height: 3.2rem;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
   text-align: right;
   letter-spacing: -0.41px;
   color: var(--color-palette-white);

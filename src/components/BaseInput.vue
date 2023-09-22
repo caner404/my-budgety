@@ -25,12 +25,7 @@ const props = defineProps({
     <label
       ><p>{{ label }}</p></label
     >
-    <input
-      :type="type"
-      :value="value"
-      :placeholder="label"
-      :class="{ diabledInput: disabled }"
-    />
+    <input :type="type" :value="value" :placeholder="label" :class="{ diabledInput: disabled }" />
   </div>
 </template>
 <style scoped>
@@ -39,9 +34,9 @@ input {
   border: 1px solid var(--color-palette-neutral-400);
   border-radius: 4px;
   width: 100%;
-  padding: 1rem;
-  font-size: 1.2rem;
-  line-height: 1.5rem;
+  padding: 0.625rem;
+  font-size: 0.75rem;
+  line-height: 0.9rem;
   font-weight: 700;
   letter-spacing: -0.25px;
   box-sizing: border-box; /* ignores box-sizing setting in base.css???*/

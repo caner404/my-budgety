@@ -53,18 +53,18 @@ defineProps({
 .modal {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 2rem;
+  gap: 0.625rem;
+  padding: 1.25rem;
   background-color: var(--color-palette-white);
-  border-radius: 1rem;
+  border-radius: 0.625rem;
   z-index: 999;
-  margin: 2rem;
+  margin: 1.25rem;
 }
 .buttons {
   align-self: end;
 }
 .modal-text {
-  line-height: 2.2rem;
+  line-height: 1.375rem;
   color: var(--color-text-neutral-500);
 }
 </style>

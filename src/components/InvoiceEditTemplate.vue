@@ -23,95 +23,30 @@ const headerText = computed(() => {
     <h1>{{ headerText }}</h1>
     <div class="sender-information">
       <p class="heading bold">Bill from</p>
-      <BaseInput
-        type="text"
-        :value="invoice.senderAddress.street"
-        label="Street Address"
-        class="sender--address"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.senderAddress.city"
-        label="City"
-        class="sender--city"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.senderAddress.postCode"
-        label="Post Code"
-        class="sender--postCode"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.senderAddress.country"
-        label="Country"
-        class="sender--country"
-      />
+      <BaseInput type="text" :value="invoice.senderAddress.street" label="Street Address" class="sender--address" />
+      <BaseInput type="text" :value="invoice.senderAddress.city" label="City" class="sender--city" />
+      <BaseInput type="text" :value="invoice.senderAddress.postCode" label="Post Code" class="sender--postCode" />
+      <BaseInput type="text" :value="invoice.senderAddress.country" label="Country" class="sender--country" />
     </div>
     <div class="client-information">
       <p class="heading bold">Bill to</p>
-      <BaseInput
-        type="text"
-        :value="invoice.clientName"
-        label="Clients name"
-        class="client--name"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.clientEmail"
-        label="Clients email"
-        class="client--email"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.clientAddress.street"
-        label="Street Address"
-        class="client--address"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.clientAddress.city"
-        label="City"
-        class="client--city"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.clientAddress.postCode"
-        label="Post Code"
-        class="client--postCode"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.clientAddress.country"
-        label="Country"
-        class="client--country"
-      />
-      <BaseInput
-        type="text"
-        :value="invoice.description"
-        label="Project Description"
-        class="client--description"
-      />
+      <BaseInput type="text" :value="invoice.clientName" label="Clients name" class="client--name" />
+      <BaseInput type="text" :value="invoice.clientEmail" label="Clients email" class="client--email" />
+      <BaseInput type="text" :value="invoice.clientAddress.street" label="Street Address" class="client--address" />
+      <BaseInput type="text" :value="invoice.clientAddress.city" label="City" class="client--city" />
+      <BaseInput type="text" :value="invoice.clientAddress.postCode" label="Post Code" class="client--postCode" />
+      <BaseInput type="text" :value="invoice.clientAddress.country" label="Country" class="client--country" />
+      <BaseInput type="text" :value="invoice.description" label="Project Description" class="client--description" />
     </div>
     <div class="item-list">
       <h2>Item List</h2>
       <div class="item" v-for="item in invoice.items">
-        <BaseInput
-          type="text"
-          :value="item.name"
-          label="Item Name"
-          class="item--name"
-        />
+        <BaseInput type="text" :value="item.name" label="Item Name" class="item--name" />
 
         <div class="item-cost">
           <BaseInput type="number" :value="item.quantity" label="Qty." />
           <BaseInput type="number" :value="item.price" label="Price" />
-          <BaseInput
-            type="number"
-            :value="item.total"
-            label="Total"
-            :disabled="true"
-          />
+          <BaseInput type="number" :value="item.total" label="Total" :disabled="true" />
           <IconDelete class="flex-align-center" />
         </div>
       </div>
@@ -132,25 +67,21 @@ main {
 }
 
 .bottomShadowEffect {
-  min-height: 6.4rem;
+  min-height: 4rem;
   width: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.0001) 0%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 h1 {
-  font-size: 2.4rem;
-  line-height: 3.2rem;
+  font-size: 1.5rem;
+  line-height: 1.125rem;
   letter-spacing: -0.5px;
 }
 .sender-information,
 .client-information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-gap: 0.9rem;
 }
 .heading {
   color: var(--color-text-primary);
@@ -159,7 +90,7 @@ h1 {
 .item-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.125rem;
 }
 .item {
   display: grid;
@@ -174,7 +105,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: 0.9rem;
 
   grid-row: 2;
   grid-column: 1 / span 4;
@@ -183,7 +114,7 @@ h1 {
   flex: 1;
 }
 .flex-align-center {
-  margin-top: 1.5rem;
+  margin-top: 0.9rem;
   align-self: center;
 }
 

@@ -14,9 +14,7 @@ const props = defineProps({
     <div class="item-details">
       <h3 class="invoice-item-name">{{ item.name }}</h3>
       <p class="invoice-item-price">
-        <span class="item-quantity"> {{ item.quantity }}x </span>&euro;{{
-          item.price
-        }}
+        <span class="item-quantity"> {{ item.quantity }}x </span>&euro;{{ item.price }}
       </p>
     </div>
     <h3 class="item-total">&euro;{{ item.total }}</h3>

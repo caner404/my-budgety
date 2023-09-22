@@ -13,7 +13,7 @@ import IconInvoiceEmpty from "./icons/IconInvoiceEmpty.vue";
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5rem;
+  gap: 1.5rem;
   transform: translateY(25%);
 }
 h2 {
@@ -22,6 +22,6 @@ h2 {
 p {
   text-align: center;
   color: var(--c-dark-violet);
-  max-width: 17rem;
+  max-width: 10.625rem;
 }
 </style>

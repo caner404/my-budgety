@@ -15,12 +15,8 @@ const props = defineProps({
     <h4 data-test="id" class="invoice-id"><span>#</span>{{ item.id }}</h4>
     <p data-test="clientName" class="invoice-name">{{ item.clientName }}</p>
     <div class="payment-terms">
-      <p data-test="paymentDue" class="invoice-date">
-        Due {{ item.paymentDue }}
-      </p>
-      <h3 data-test="total" class="invoice-total">
-        <span>&euro;</span>{{ item.total }}
-      </h3>
+      <p data-test="paymentDue" class="invoice-date">Due {{ item.paymentDue }}</p>
+      <h3 data-test="total" class="invoice-total"><span>&euro;</span>{{ item.total }}</h3>
     </div>
     <InvoiceStatus :itemStatus="item.status" class="invoice-status" />
     <IconArrowRight class="invoice-arrow" />
@@ -38,7 +34,7 @@ span {
   gap: 1rem;
 
   cursor: pointer;
-  padding: 2rem;
+  padding: 1.125rem;
   box-shadow: 0px 1rem 1rem -1rem rgba(72, 84, 159, 0.1);
   border-radius: 0.8rem;
   border: 1px solid var(--color-palette-white);
@@ -77,7 +73,7 @@ span {
   .invoice-item {
     display: grid;
     grid-template-columns: repeat(5, 1fr) 2rem;
-    gap: 2.5rem;
+    gap: 1.5rem;
     padding: 1rem 2rem;
   }
 

@@ -53,12 +53,12 @@ function handleInvoiceFilter(invoiceStatus: InvoiceStatus): void {
 <style scoped>
 .filterDropdown {
   position: absolute;
-  top: 3rem;
+  top: 1.875rem;
   background: var(--color-background-white);
   box-shadow: 0px 1rem 2rem rgba(72, 84, 159, 0.25);
   border-radius: 0.8rem;
-  padding: 2rem;
-  width: 13rem;
+  padding: 1.125rem;
+  width: 8.125rem;
   z-index: 99;
 }
 .filterList {

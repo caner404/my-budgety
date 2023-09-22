@@ -17,8 +17,7 @@ const invoiceCountTextLarge = computed(() => {
   let statusText = status.value;
   if (status.value.match(InvoiceStatus.NONE)) statusText = InvoiceStatus.TOTAL;
   if (count.value <= 0) return `There are no invoices`;
-  if (count.value === 1)
-    return `There is 1 ${statusText.toLowerCase()} invoice`;
+  if (count.value === 1) return `There is 1 ${statusText.toLowerCase()} invoice`;
   return `There are ${count.value} ${statusText.toLowerCase()} invoices`;
 });
 </script>
@@ -38,7 +37,7 @@ const invoiceCountTextLarge = computed(() => {
 .invoiceCount {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 .heading-medium,
 .count-medium {

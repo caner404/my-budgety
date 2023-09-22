@@ -22,11 +22,7 @@ const show = store.isInvoicesEmpty;
     <div class="main-subheading">
       <InvoiceCount />
       <InvoiceFilter />
-      <router-link
-        :to="{ name: 'InvoicesCreate' }"
-        custom
-        v-slot="{ navigate }"
-      >
+      <router-link :to="{ name: 'InvoicesCreate' }" custom v-slot="{ navigate }">
         <InvoiceCreateButton @click="navigate" role="router-link" />
       </router-link>
     </div>
@@ -38,10 +34,10 @@ const show = store.isInvoicesEmpty;
 main {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.125rem;
   min-height: 100vh;
   background: var(--color-background-neutral);
-  padding: 2rem;
+  padding: 1.125rem;
   overflow: scroll;
 }
 .main-subheading {
@@ -49,7 +45,7 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1.125rem;
 }
 
 @media screen and (min-width: 768px) {

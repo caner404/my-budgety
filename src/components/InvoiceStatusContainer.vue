@@ -23,7 +23,7 @@ defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem;
+  padding: 1.25rem;
   background-color: var(--color-palette-white);
 }
 .invoice-status-container p {
@@ -35,7 +35,7 @@ defineProps({
 
 @media screen and (min-width: 768px) {
   .invoice-status-container {
-    padding: 2rem 4rem;
+    padding: 1.25rem 2.5rem;
   }
   .invoice-status-text {
     margin-right: 2rem;

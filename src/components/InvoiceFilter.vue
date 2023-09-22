@@ -26,7 +26,7 @@ const showDropdown = ref(false);
   justify-content: space-between;
   align-items: center;
   margin-left: auto;
-  gap: 2rem;
+  gap: 1.125rem;
 }
 .filter-text {
   display: flex;

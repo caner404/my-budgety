@@ -20,20 +20,12 @@ const invoice: Invoice = store.getInvoiceById(paramId);
 <template>
   <div class="invoiceActions">
     <BaseButton mode="grey">
-      <router-link
-        :to="{ name: 'InvoicesEdit', params: { id: paramId } }"
-        class="router-link bold"
-        >Edit</router-link
-      >
+      <router-link :to="{ name: 'InvoicesEdit', params: { id: paramId } }" class="router-link bold">Edit</router-link>
     </BaseButton>
     <BaseButton mode="red">
       <p class="bold" @click="openModal">Delete</p>
     </BaseButton>
-    <BaseButton
-      mode="violet"
-      v-if="invoice.status !== InvoiceStatus.Paid"
-      @click="invoice.status = InvoiceStatus.Paid"
-    >
+    <BaseButton mode="violet" v-if="invoice.status !== InvoiceStatus.Paid" @click="invoice.status = InvoiceStatus.Paid">
       <p class="bold">Mark as paid</p>
     </BaseButton>
   </div>

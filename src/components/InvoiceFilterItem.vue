@@ -16,10 +16,7 @@ const props = defineProps({
 </script>
 <template>
   <div class="filterItem">
-    <button
-      @click="$emit('handleInvoiceFilter', filterStatus)"
-      :class="{ itemClicked: showIconCheck }"
-    >
+    <button @click="$emit('handleInvoiceFilter', filterStatus)" :class="{ itemClicked: showIconCheck }">
       <IconCheck v-show="showIconCheck" />
     </button>
     <h4>{{ filterStatus }}</h4>
@@ -30,14 +27,14 @@ const props = defineProps({
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 0.9rem;
 }
 .filterItem button {
   border: none;
   border: 1px solid var(--color-background-neutral-400);
   background-color: var(--color-background-neutral-400);
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1rem;
+  height: 1rem;
   border-radius: 2px;
 }
 
