@@ -16,6 +16,7 @@ import IconAvatar from "@/components/icons/IconAvatar.vue";
 
 <style scoped>
 header {
+  height: 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -7,4 +7,4 @@ import TheHeading from "@/components/TheHeading.vue";
   <router-view></router-view>
 </template>
 
-<style scoped></style>
+<style></style>

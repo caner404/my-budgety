@@ -6,11 +6,18 @@ import InvoiceGoBack from "./InvoiceGoBack.vue";
 import BaseInput from "./BaseInput.vue";
 import BaseButton from "./BaseButton.vue";
 import IconDelete from "./icons/IconDelete.vue";
+import InvoiceStatusActions from "./InvoiceStatusActions.vue";
 
 const props = defineProps({
   invoice: {
     type: Object as PropType<Invoice>,
     required: true,
+  },
+  showBackButton: {
+    type: Boolean,
+  },
+  showShadowEffect: {
+    type: Boolean,
   },
 });
 const headerText = computed(() => {
@@ -19,7 +26,7 @@ const headerText = computed(() => {
 </script>
 <template>
   <main>
-    <InvoiceGoBack />
+    <InvoiceGoBack v-show="showBackButton" />
     <h1>{{ headerText }}</h1>
     <div class="sender-information">
       <p class="heading bold">Bill from</p>
@@ -59,17 +66,20 @@ const headerText = computed(() => {
 </template>
 <style scoped>
 main {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
+  z-index: 1;
   background: var(--color-palette-white);
 }
 
 .bottomShadowEffect {
   min-height: 4rem;
   width: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.1) 100%);
 }
 
 h1 {
@@ -154,5 +164,23 @@ h1 {
 .client--description {
   grid-row: 7;
   grid-column: 1 / span 2;
+}
+@media screen and (min-width: 768px) {
+  .sender--address {
+    grid-column: 1 / span 4;
+  }
+  .sender--country {
+    grid-row: 3;
+  }
+  .client--name,
+  .client--address,
+  .client--email,
+  .client--description {
+    grid-column: 1 / span 3;
+  }
+  .client--country {
+    grid-row: 5;
+    grid-column: 3;
+  }
 }
 </style>

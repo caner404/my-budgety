@@ -18,7 +18,6 @@ const invoice: Invoice = computed(() => {
   <FadeInTransition>
     <div class="createView">
       <InvoiceEditTemplate :invoice="invoice" />
-      <div class="bottomShadowEffect"></div>
       <footer>
         <BaseButton mode="grey" @click="$router.back()">
           <p class="bold">Discard</p>
