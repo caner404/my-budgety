@@ -6,6 +6,7 @@ export const useInvoiceStore = defineStore("invoice", {
     invoiceData: [] as InvoiceModule.Invoice[],
     invoiceDataByStatus: [] as InvoiceModule.Invoice[],
     invoiceFilterStatus: InvoiceModule.InvoiceStatus.NONE,
+    showInvoiceEditSideBar: false,
   }),
 
   getters: {
@@ -39,11 +40,12 @@ export const useInvoiceStore = defineStore("invoice", {
   },
 
   actions: {
+    toggleSidebarButton(): void {
+      this.showInvoiceEditSideBar = !this.showInvoiceEditSideBar;
+    },
     calculateStatus(responseStatus: String): InvoiceModule.InvoiceStatus {
-      if (responseStatus.toLowerCase() === "paid")
-        return InvoiceModule.InvoiceStatus.Paid;
-      if (responseStatus.toLowerCase() === "pending")
-        return InvoiceModule.InvoiceStatus.Pending;
+      if (responseStatus.toLowerCase() === "paid") return InvoiceModule.InvoiceStatus.Paid;
+      if (responseStatus.toLowerCase() === "pending") return InvoiceModule.InvoiceStatus.Pending;
       return InvoiceModule.InvoiceStatus.Draft;
     },
     formateDate(invoiceDate: string): string {
@@ -53,9 +55,7 @@ export const useInvoiceStore = defineStore("invoice", {
         day: "2-digit",
       };
       const paymentDate = new Date(invoiceDate);
-      const dateTime = new Intl.DateTimeFormat("default", options).format(
-        paymentDate
-      );
+      const dateTime = new Intl.DateTimeFormat("default", options).format(paymentDate);
       return dateTime;
     },
     loadInvoices(invoiceJson: InvoiceModule.Invoice[]) {
@@ -68,10 +68,7 @@ export const useInvoiceStore = defineStore("invoice", {
         });
       }
     },
-    filterInvoiceByStatus(
-      invoiceStatus: InvoiceModule.InvoiceStatus,
-      withFilter: Boolean
-    ): InvoiceModule.Invoice[] {
+    filterInvoiceByStatus(invoiceStatus: InvoiceModule.InvoiceStatus, withFilter: Boolean): InvoiceModule.Invoice[] {
       if (withFilter) {
         this.invoiceFilterStatus = invoiceStatus;
       } else {

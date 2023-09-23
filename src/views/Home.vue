@@ -4,25 +4,25 @@ import TheHeading from "@/components/TheHeading.vue";
 import TheMain from "@/components/TheMain.vue";
 import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton.vue";
 import FadeInUpTransition from "@/components/transitions/FadeInUpTransition.vue";
+import { useInvoiceStore } from "@/stores/invoice";
+import { storeToRefs } from "pinia";
 import { ref } from "vue";
 
-const showInvoiceEditSidebar = ref(false);
+const store = useInvoiceStore();
+const { showInvoiceEditSideBar } = storeToRefs(store);
 </script>
 <template>
   <TheHeading />
   <div class="container">
     <FadeInUpTransition>
-      <TheMain @show-invoice-sidebar="showInvoiceEditSidebar = !showInvoiceEditSidebar" />
+      <TheMain />
     </FadeInUpTransition>
 
     <FadeInleftTransition>
-      <InvoiceEditSidebar
-        v-show="showInvoiceEditSidebar"
-        @show-invoice-sidebar="showInvoiceEditSidebar = !showInvoiceEditSidebar"
-      />
+      <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
     </FadeInleftTransition>
 
-    <div v-if="showInvoiceEditSidebar" class="overlay" @click="showInvoiceEditSidebar = !showInvoiceEditSidebar"></div>
+    <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
   </div>
 </template>
 <style scoped>

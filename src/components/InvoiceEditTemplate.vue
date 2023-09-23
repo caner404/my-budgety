@@ -14,9 +14,11 @@ const props = defineProps({
   },
   showBackButton: {
     type: Boolean,
+    default: true,
   },
   showShadowEffect: {
     type: Boolean,
+    default: true,
   },
 });
 const headerText = computed(() => {

@@ -10,12 +10,15 @@ import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
 import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
 import InvoiceStatusActions from "@/components/InvoiceStatusActions.vue";
 import TheHeading from "@/components/TheHeading.vue";
+import InvoiceEditSidebar from "@/components/InvoiceEditSidebar.vue";
+import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton.vue";
+import { storeToRefs } from "pinia";
 
 const route = useRoute();
 const store = useInvoiceStore();
 const paramId = route.params.id;
 const invoice: Invoice = computed(() => store.getInvoiceById(route.params.id)).value;
-
+const { showInvoiceEditSideBar } = storeToRefs(store);
 const showDeleteModal = ref(false);
 
 const openModal = () => {
@@ -40,6 +43,9 @@ provide("openModal", openModal);
         :id="invoice.id"
         @close-modal="(toClose) => (showDeleteModal = toClose)"
       />
+      <FadeInleftTransition>
+        <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
+      </FadeInleftTransition>
     </div>
   </FadeInTransition>
 </template>

@@ -16,10 +16,10 @@ const invoicesData = computed(() => {
   return store.getInvoices;
 });
 const show = store.isInvoicesEmpty;
-
-const emit = defineEmits<{
-  (e: "showInvoiceSidebar", showSidebar: boolean): void;
-}>();
+const toggleButton = () => {
+  console.log("hi");
+  store.toggleSidebarButton();
+};
 </script>
 <template>
   <main>
@@ -29,7 +29,7 @@ const emit = defineEmits<{
       <router-link :to="{ name: 'InvoicesCreate' }" custom v-slot="{ navigate }">
         <InvoiceCreateButton class="onMobile" @click="navigate" role="router-link" />
       </router-link>
-      <InvoiceCreateButton class="onTabletOrHigher" @click="$emit('showInvoiceSidebar')" />
+      <InvoiceCreateButton class="onTabletOrHigher" @click="toggleButton" />
     </div>
 
     <InvoiceListEmpty v-if="show" />
