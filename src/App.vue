@@ -1,10 +1,5 @@
-<script setup lang="ts">
-import TheHeading from "@/components/TheHeading.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <TheHeading />
   <router-view></router-view>
 </template>
-
-<style></style>

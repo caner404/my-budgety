@@ -9,13 +9,12 @@ import InvoiceStatusContainer from "@/components/InvoiceStatusContainer.vue";
 import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
 import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
 import InvoiceStatusActions from "@/components/InvoiceStatusActions.vue";
+import TheHeading from "@/components/TheHeading.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
 const paramId = route.params.id;
-const invoice: Invoice = computed(() =>
-  store.getInvoiceById(route.params.id)
-).value;
+const invoice: Invoice = computed(() => store.getInvoiceById(route.params.id)).value;
 
 const showDeleteModal = ref(false);
 
@@ -25,6 +24,7 @@ const openModal = () => {
 provide("openModal", openModal);
 </script>
 <template>
+  <TheHeading />
   <FadeInTransition>
     <div class="showView">
       <main>

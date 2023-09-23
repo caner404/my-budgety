@@ -2,11 +2,10 @@
 import type { Invoice } from "@/types/InvoiceModule";
 import { computed, type PropType } from "vue";
 
-import InvoiceGoBack from "./InvoiceGoBack.vue";
-import BaseInput from "./BaseInput.vue";
 import BaseButton from "./BaseButton.vue";
+import BaseInput from "./BaseInput.vue";
 import IconDelete from "./icons/IconDelete.vue";
-import InvoiceStatusActions from "./InvoiceStatusActions.vue";
+import InvoiceGoBack from "./InvoiceGoBack.vue";
 
 const props = defineProps({
   invoice: {

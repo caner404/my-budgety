@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useInvoiceStore } from "@/stores/invoice";
 import type { Invoice } from "@/types/InvoiceModule";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 import { useRoute } from "vue-router";
 import BaseButton from "./BaseButton.vue";
 import InvoiceEditTemplate from "./InvoiceEditTemplate.vue";
@@ -38,9 +38,15 @@ const emit = defineEmits<{
   top: 0;
   left: 0;
   z-index: 1;
+  height: 90%;
   border-radius: 0 1.5rem 1.5rem 0;
   background-color: #fff;
-  padding: 1.3rem;
+  overflow: hidden; /* corner top right*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+  width: 60%;
 }
 footer {
   display: flex;

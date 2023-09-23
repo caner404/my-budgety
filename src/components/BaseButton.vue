@@ -24,7 +24,7 @@ button {
   cursor: pointer;
   color: var(--color-palette-white);
   border-radius: 1.5rem;
-  padding: 0.9rem 1.5rem;
+  padding: 1rem;
 }
 .violet {
   background-color: var(--color-background-primary);

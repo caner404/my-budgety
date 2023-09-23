@@ -27,8 +27,8 @@ h4 {
 
 p {
   font-weight: 500;
-  font-size: 0.75rem;
-  line-height: 0.9375rem;
+  font-size: 12px;
+  line-height: 15px;
   letter-spacing: -0.25px;
 }
 .bold {
