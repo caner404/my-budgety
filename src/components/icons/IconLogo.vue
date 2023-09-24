@@ -1,12 +1,7 @@
 <template>
   <div class="container">
     <div class="logo-container">
-      <svg
-        class="logo"
-        xmlns="http://www.w3.org/2000/svg"
-        width="28"
-        height="26"
-      >
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="28" height="26">
         <path
           fill="#FFF"
           fill-rule="evenodd"
@@ -34,17 +29,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0px 2rem 2rem 0px;
+  border-radius: 0px 1.25rem 1.25rem 0px;
   background-color: var(--color-background-primary);
-  width: 7.2rem;
-  height: 7.2rem;
+  width: 4.5rem;
+  height: 4.5rem;
 }
 .logo-container--reverse {
   position: absolute;
-  height: 3.6rem;
+  height: 2.25rem;
   top: 50%;
   transform: matrix(-1, 0, 0, 1, 0, 0);
   background-color: var(--color-background-primary-100);
-  border-radius: 0rem 2rem 0rem 2rem;
+  border-radius: 0rem 1.25rem 0rem 1.25rem;
+  overflow: hidden;
 }
 </style>

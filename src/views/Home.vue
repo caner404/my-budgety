@@ -11,27 +11,33 @@ const store = useInvoiceStore();
 const { showInvoiceEditSideBar } = storeToRefs(store);
 </script>
 <template>
-  <TheHeading />
-  <div class="container">
-    <FadeInUpTransition>
-      <TheMain />
-    </FadeInUpTransition>
+  <div class="homeView">
+    <TheHeading />
+    <div class="container">
+      <FadeInUpTransition>
+        <TheMain />
+      </FadeInUpTransition>
 
-    <FadeInleftTransition>
-      <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
-    </FadeInleftTransition>
+      <FadeInleftTransition>
+        <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
+      </FadeInleftTransition>
 
-    <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
+      <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
+    </div>
   </div>
 </template>
 <style scoped>
-.container {
-  position: relative;
+.homeView {
+  display: flex;
+  flex-direction: column;
   background: var(--color-background-neutral);
   overflow: hidden;
+  height: 100%;
+}
+.container {
+  position: relative;
   display: flex;
   justify-content: center;
-  height: 100%;
 }
 .overlay {
   position: absolute;
@@ -42,5 +48,14 @@ const { showInvoiceEditSideBar } = storeToRefs(store);
   background-color: #000;
   opacity: 0.5;
   mix-blend-mode: normal;
+}
+
+@media screen and (min-width: 1024px) {
+  .homeView {
+    flex-direction: row;
+  }
+  .container {
+    flex: 1;
+  }
 }
 </style>

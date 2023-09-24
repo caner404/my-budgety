@@ -7,10 +7,3 @@
     />
   </svg>
 </template>
-
-<style scoped>
-svg {
-  margin-left: auto;
-  margin-right: 2rem;
-}
-</style>
