@@ -45,7 +45,6 @@ const emit = defineEmits<{
   flex-direction: column;
   justify-content: space-between;
   overflow-x: hidden;
-  width: 60%;
 }
 footer {
   display: flex;

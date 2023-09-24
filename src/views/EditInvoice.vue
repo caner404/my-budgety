@@ -37,7 +37,8 @@ const { showInvoiceEditSideBar } = storeToRefs(store);
   position: relative;
   height: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 footer {
   display: flex;

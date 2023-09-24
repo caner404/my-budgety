@@ -27,9 +27,11 @@ const { showInvoiceEditSideBar } = storeToRefs(store);
 <style scoped>
 .container {
   position: relative;
-  height: 100%;
   background: var(--color-background-neutral);
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 .overlay {
   position: absolute;

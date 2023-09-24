@@ -39,6 +39,9 @@ const invoice: Invoice = computed(() => {
   height: 100%;
   display: flex;
   flex-direction: column;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 
 footer {

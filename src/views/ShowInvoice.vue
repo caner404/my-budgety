@@ -56,6 +56,9 @@ provide("openModal", openModal);
   height: 100%;
   background: var(--color-background-neutral);
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  height: 100%;
 }
 main {
   position: relative;
