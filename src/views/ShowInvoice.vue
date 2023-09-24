@@ -13,6 +13,7 @@ import type { Invoice } from "@/types/InvoiceModule";
 import { storeToRefs } from "pinia";
 import { computed, provide, ref } from "vue";
 import { useRoute } from "vue-router";
+import BaseOverlay from "@/components/BaseOverlay.vue";
 
 const route = useRoute();
 const store = useInvoiceStore();
@@ -27,26 +28,28 @@ const openModal = () => {
 provide("openModal", openModal);
 </script>
 <template>
-  <TheHeading />
   <FadeInTransition>
     <div class="showView">
-      <main>
-        <InvoiceGoBack />
-        <InvoiceStatusContainer :invoice="invoice" />
-        <InvoiceDetailed :invoice="invoice" />
-      </main>
-      <footer>
-        <InvoiceStatusActions :invoice="invoice" />
-      </footer>
-      <DeleteModalDialog
-        v-if="showDeleteModal"
-        :id="invoice.id"
-        @close-modal="(toClose) => (showDeleteModal = toClose)"
-      />
+      <TheHeading />
+      <div class="container">
+        <main>
+          <InvoiceGoBack />
+          <InvoiceStatusContainer :invoice="invoice" />
+          <InvoiceDetailed :invoice="invoice" />
+        </main>
+        <footer>
+          <InvoiceStatusActions :invoice="invoice" />
+        </footer>
+        <DeleteModalDialog
+          v-if="showDeleteModal"
+          :id="invoice.id"
+          @close-modal="(toClose) => (showDeleteModal = toClose)"
+        />
+      </div>
       <FadeInleftTransition>
         <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
       </FadeInleftTransition>
-      <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
+      <BaseOverlay v-if="showInvoiceEditSideBar" />
     </div>
   </FadeInTransition>
 </template>
@@ -57,8 +60,13 @@ provide("openModal", openModal);
   background: var(--color-background-neutral);
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  height: 100%;
 }
 main {
   position: relative;
@@ -73,23 +81,19 @@ footer {
   padding: 2rem;
 }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.5;
-  mix-blend-mode: normal;
-}
-
 @media screen and (min-width: 768px) {
-  main {
-    min-height: 100vh;
-  }
   footer {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .showView,
+  .container {
+    flex-direction: row;
+  }
+  .container {
+    flex: 1;
   }
 }
 </style>

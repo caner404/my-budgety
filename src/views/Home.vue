@@ -6,6 +6,7 @@ import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton
 import FadeInUpTransition from "@/components/transitions/FadeInUpTransition.vue";
 import { useInvoiceStore } from "@/stores/invoice";
 import { storeToRefs } from "pinia";
+import BaseOverlay from "@/components/BaseOverlay.vue";
 
 const store = useInvoiceStore();
 const { showInvoiceEditSideBar } = storeToRefs(store);
@@ -17,13 +18,11 @@ const { showInvoiceEditSideBar } = storeToRefs(store);
       <FadeInUpTransition>
         <TheMain />
       </FadeInUpTransition>
-
-      <FadeInleftTransition>
-        <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
-      </FadeInleftTransition>
-
-      <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
     </div>
+    <FadeInleftTransition>
+      <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
+    </FadeInleftTransition>
+    <BaseOverlay v-if="showInvoiceEditSideBar" />
   </div>
 </template>
 <style scoped>
@@ -38,16 +37,6 @@ const { showInvoiceEditSideBar } = storeToRefs(store);
   position: relative;
   display: flex;
   justify-content: center;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0.5;
-  mix-blend-mode: normal;
 }
 
 @media screen and (min-width: 1024px) {

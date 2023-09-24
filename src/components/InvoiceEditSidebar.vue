@@ -37,8 +37,8 @@ const emit = defineEmits<{
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
-  height: 90%;
+  z-index: 99;
+  max-width: 70%;
   border-radius: 0 1.5rem 1.5rem 0;
   background-color: #fff;
   display: flex;
