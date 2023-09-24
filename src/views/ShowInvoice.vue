@@ -1,18 +1,18 @@
 <script setup lang="ts">
+import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
+import InvoiceDetailed from "@/components/InvoiceDetailed.vue";
+import InvoiceEditSidebar from "@/components/InvoiceEditSidebar.vue";
+import InvoiceGoBack from "@/components/InvoiceGoBack.vue";
+import InvoiceStatusActions from "@/components/InvoiceStatusActions.vue";
+import InvoiceStatusContainer from "@/components/InvoiceStatusContainer.vue";
+import TheHeading from "@/components/TheHeading.vue";
+import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton.vue";
+import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
 import { useInvoiceStore } from "@/stores/invoice";
 import type { Invoice } from "@/types/InvoiceModule";
-import { useRoute } from "vue-router";
-import { computed, provide, ref } from "vue";
-import InvoiceGoBack from "@/components/InvoiceGoBack.vue";
-import InvoiceDetailed from "@/components/InvoiceDetailed.vue";
-import InvoiceStatusContainer from "@/components/InvoiceStatusContainer.vue";
-import DeleteModalDialog from "@/components/DeleteModalDialog.vue";
-import FadeInTransition from "@/components/transitions/FadeInTransition.vue";
-import InvoiceStatusActions from "@/components/InvoiceStatusActions.vue";
-import TheHeading from "@/components/TheHeading.vue";
-import InvoiceEditSidebar from "@/components/InvoiceEditSidebar.vue";
-import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton.vue";
 import { storeToRefs } from "pinia";
+import { computed, provide, ref } from "vue";
+import { useRoute } from "vue-router";
 
 const route = useRoute();
 const store = useInvoiceStore();
@@ -48,6 +48,7 @@ provide("openModal", openModal);
       </FadeInleftTransition>
     </div>
   </FadeInTransition>
+  <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
 </template>
 <style scoped>
 main {
@@ -61,6 +62,17 @@ main {
 
 footer {
   padding: 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+  mix-blend-mode: normal;
 }
 
 @media screen and (min-width: 768px) {

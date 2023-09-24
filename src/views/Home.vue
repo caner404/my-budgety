@@ -6,7 +6,6 @@ import FadeInleftTransition from "@/components/transitions/FadeInLeftTransisiton
 import FadeInUpTransition from "@/components/transitions/FadeInUpTransition.vue";
 import { useInvoiceStore } from "@/stores/invoice";
 import { storeToRefs } from "pinia";
-import { ref } from "vue";
 
 const store = useInvoiceStore();
 const { showInvoiceEditSideBar } = storeToRefs(store);
