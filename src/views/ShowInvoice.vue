@@ -46,11 +46,17 @@ provide("openModal", openModal);
       <FadeInleftTransition>
         <InvoiceEditSidebar v-show="showInvoiceEditSideBar" />
       </FadeInleftTransition>
+      <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
     </div>
   </FadeInTransition>
-  <div v-if="showInvoiceEditSideBar" class="overlay" @click="store.toggleSidebarButton"></div>
 </template>
 <style scoped>
+.showView {
+  position: relative;
+  height: 100%;
+  background: var(--color-background-neutral);
+  overflow: hidden;
+}
 main {
   position: relative;
   display: flex;
