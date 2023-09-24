@@ -41,7 +41,6 @@ const emit = defineEmits<{
   height: 90%;
   border-radius: 0 1.5rem 1.5rem 0;
   background-color: #fff;
-  overflow: hidden; /* corner top right*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
